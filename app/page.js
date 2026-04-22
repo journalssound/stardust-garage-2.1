@@ -1,16 +1,6 @@
-'use client';
-
 import Link from 'next/link';
-import { useState } from 'react';
-
-const events = [
-  { slug: 'neon-pulse', title: 'Neon Pulse', date: 'April 25, 2026', image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80' },
-  { slug: 'dj-sapphire', title: 'DJ Sapphire + Guests', date: 'April 30, 2026', image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80' },
-  { slug: 'velvet-pulse', title: 'Velvet Pulse + Guests', date: 'May 3, 2026', image: 'https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=800&q=80' },
-  { slug: 'midnight-sessions', title: 'Midnight Sessions', date: 'May 10, 2026', image: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=800&q=80' },
-  { slug: 'echo-chamber-live', title: 'Echo Chamber Live', date: 'May 17, 2026', image: 'https://images.unsplash.com/photo-1534329539061-64caeb388c42?w=800&q=80' },
-  { slug: 'stardust-selects', title: 'Stardust Selects', date: 'May 24, 2026', image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80' },
-];
+import { createClient } from '@/lib/supabase/server';
+import SignupForm from './components/SignupForm';
 
 const waysWeDoIt = [
   { title: 'Work hard, play hard', desc: "M–F we offer the cowork experience that Creators and Builders like yourself have been craving. After working hours and weekends, we offer dance music experiences like you won't find anywhere in Austin." },
@@ -19,92 +9,33 @@ const waysWeDoIt = [
   { title: 'Legendary Atmosphere', desc: 'Quite possibly the coziest venue on planet earth. "It feels like I\'m in my living room."' },
 ];
 
-function SignupForm() {
-  const [value, setValue] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+// Disable caching so new events appear immediately after being added
+export const revalidate = 0;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!value.trim()) return;
-    setSubmitted(true);
-  };
-
-  if (submitted) {
-    return (
-      <div className="max-w-[520px] mx-auto text-center">
-        <div
-          className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-6"
-          style={{ background: 'rgba(0,0,0,0.08)' }}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
-        </div>
-        <h3
-          className="text-[26px] font-bold mb-3 -tracking-[0.01em]"
-          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-        >
-          You&apos;re on the list
-        </h3>
-        <p className="text-[15px] leading-[1.6]" style={{ color: '#555' }}>
-          We&apos;ll be in touch with the next drop.
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <div className="max-w-[520px] mx-auto text-center">
-      <div
-        className="inline-block text-[11px] font-semibold tracking-[0.2em] px-3.5 py-1.5 rounded-full mb-6"
-        style={{
-          color: '#555',
-          border: '1px solid rgba(0,0,0,0.15)',
-        }}
-      >
-        STAY IN THE LOOP
-      </div>
-      <h2
-        className="text-[32px] md:text-[40px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-4"
-        style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-      >
-        Never miss a drop.
-      </h2>
-      <p className="text-[15px] leading-[1.55] mb-8 max-w-[420px] mx-auto" style={{ color: '#555' }}>
-        Get early access to events, parties, and members-only experiences.
-      </p>
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col sm:flex-row gap-2.5 max-w-[460px] mx-auto"
-      >
-        <input
-          type="text"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          placeholder="Email or phone number"
-          className="flex-1 px-5 py-3.5 rounded-full text-[14px] outline-none border transition-colors focus:border-black/40"
-          style={{
-            background: '#ffffff',
-            borderColor: 'rgba(0,0,0,0.15)',
-            color: '#0a0a0a',
-          }}
-        />
-        <button
-          type="submit"
-          className="px-7 py-3.5 rounded-full text-[12px] font-semibold tracking-[0.14em] transition-all hover:-translate-y-0.5 whitespace-nowrap"
-          style={{ background: '#0a0a0a', color: '#ffffff' }}
-        >
-          NOTIFY ME
-        </button>
-      </form>
-      <p className="text-[11px] mt-4" style={{ color: '#888' }}>
-        No spam. Unsubscribe anytime.
-      </p>
-    </div>
-  );
+function formatEventDate(dateString) {
+  // Convert "2026-04-25" to "April 25, 2026"
+  const date = new Date(dateString + 'T00:00:00');
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+  // Fetch events from Supabase, sorted by date ascending
+  const supabase = await createClient();
+  const { data: events, error } = await supabase
+    .from('events')
+    .select('*')
+    .order('event_date', { ascending: true });
+
+  if (error) {
+    console.error('Error fetching events:', error);
+  }
+
+  const eventList = events || [];
+
   return (
     <>
       <section className="relative mx-auto max-w-[1100px] mt-6 rounded-[18px] overflow-hidden bg-[#111]" style={{ aspectRatio: '16 / 7.3' }}>
@@ -127,24 +58,35 @@ export default function HomePage() {
         <SignupForm />
       </section>
 
-      <section className="max-w-[1100px] mx-auto px-6 pb-32">
+      <section className="max-w-[1100px] mx-auto px-6 py-24">
         <h2 className="text-[15px] font-bold tracking-[0.12em] mb-8" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
           UPCOMING EVENTS
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[22px]">
-          {events.map((event) => (
-            <Link key={event.slug} href={`/events/${event.slug}`} className="group block">
-              <div className="relative overflow-hidden rounded-[14px] bg-[#1a1a1a] transition-transform group-hover:-translate-y-1" style={{ aspectRatio: '3 / 4' }}>
-                <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
-                <span className="absolute top-[18px] right-[18px] bg-white text-[#0a0a0a] px-4 py-2 rounded-full text-[11px] font-semibold tracking-[0.12em]">
-                  BUY TICKETS
-                </span>
-              </div>
-              <div className="text-xs mt-4 mb-2" style={{ color: '#8a8a8a' }}>{event.date}</div>
-              <h3 className="text-[17px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>{event.title}</h3>
-            </Link>
-          ))}
-        </div>
+
+        {eventList.length === 0 ? (
+          <p style={{ color: '#8a8a8a' }}>No upcoming events right now. Check back soon.</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-[22px]">
+            {eventList.map((event) => (
+              <Link key={event.id} href={`/events/${event.slug}`} className="group block">
+                <div className="relative overflow-hidden rounded-[14px] bg-[#1a1a1a] transition-transform group-hover:-translate-y-1" style={{ aspectRatio: '3 / 4' }}>
+                  {event.image_url && (
+                    <img src={event.image_url} alt={event.title} className="w-full h-full object-cover" />
+                  )}
+                  <span className="absolute top-[18px] right-[18px] bg-white text-[#0a0a0a] px-4 py-2 rounded-full text-[11px] font-semibold tracking-[0.12em]">
+                    BUY TICKETS
+                  </span>
+                </div>
+                <div className="text-xs mt-4 mb-2" style={{ color: '#8a8a8a' }}>
+                  {formatEventDate(event.event_date)}
+                </div>
+                <h3 className="text-[17px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                  {event.title}
+                </h3>
+              </Link>
+            ))}
+          </div>
+        )}
       </section>
 
       <section className="py-24 px-12" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
@@ -235,7 +177,6 @@ export default function HomePage() {
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Column 1: Email + WhatsApp */}
             <div>
               <h3 className="text-[20px] font-bold mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 Email
@@ -252,7 +193,6 @@ export default function HomePage() {
               </a>
             </div>
 
-            {/* Column 2: Address + Hours + Follow Us */}
             <div>
               <h3 className="text-[20px] font-bold mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 Address
@@ -304,7 +244,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Column 3: Contact Form */}
             <div>
               <form className="space-y-5">
                 <div className="grid grid-cols-2 gap-4">
