@@ -9,12 +9,6 @@ const benefits = [
   'Gear storage locker access',
 ];
 
-const stats = [
-  { number: '500+', label: 'ACTIVE MEMBERS' },
-  { number: '12', label: 'YEARS RUNNING' },
-  { number: '200+', label: 'EVENTS/YEAR' },
-];
-
 function CheckIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f5f5f5" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
@@ -34,7 +28,7 @@ export default function MembersPage() {
       </p>
 
       <div
-        className="rounded-[18px] p-12 mb-20 border"
+        className="rounded-[18px] p-12 border"
         style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
       >
         <div className="flex items-baseline gap-2 mb-10">
@@ -57,19 +51,6 @@ export default function MembersPage() {
         <button className="w-full py-5 rounded-full bg-white text-[#0a0a0a] text-[13px] font-semibold tracking-[0.16em] hover:bg-gray-200 transition-all hover:-translate-y-0.5">
           BECOME A MEMBER
         </button>
-      </div>
-
-      <div className="grid grid-cols-3 gap-6 text-center">
-        {stats.map((stat) => (
-          <div key={stat.label}>
-            <div className="text-[44px] font-bold -tracking-[0.02em] mb-2.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-              {stat.number}
-            </div>
-            <div className="text-[11px] font-semibold tracking-[0.18em]" style={{ color: '#8a8a8a' }}>
-              {stat.label}
-            </div>
-          </div>
-        ))}
       </div>
     </main>
   );
