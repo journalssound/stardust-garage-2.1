@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
 
 const events = [
   { slug: 'neon-pulse', title: 'Neon Pulse', date: 'April 25, 2026', image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80' },
@@ -14,6 +17,91 @@ const waysWeDoIt = [
   { title: 'Iconic Atmosphere', desc: 'Our venue is renowned for its intimate setting that brings you closer to the artists you love.' },
   { title: 'Capacity & Flexibility', desc: "Whether it's a sold-out show for 500 or an intimate showcase, Stardust Garage adapts to create the perfect vibe." },
 ];
+
+function SignupForm() {
+  const [value, setValue] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!value.trim()) return;
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <div className="max-w-[520px] mx-auto text-center">
+        <div
+          className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-6"
+          style={{ background: 'rgba(255,255,255,0.08)' }}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f5f5f5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <h3
+          className="text-[26px] font-bold mb-3 -tracking-[0.01em]"
+          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+        >
+          You&apos;re on the list
+        </h3>
+        <p className="text-[15px] leading-[1.6]" style={{ color: '#8a8a8a' }}>
+          We&apos;ll be in touch with the next drop.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-[520px] mx-auto text-center">
+      <div
+        className="inline-block text-[11px] font-semibold tracking-[0.2em] px-3.5 py-1.5 rounded-full mb-6"
+        style={{
+          color: '#8a8a8a',
+          border: '1px solid rgba(255,255,255,0.1)',
+        }}
+      >
+        STAY IN THE LOOP
+      </div>
+      <h2
+        className="text-[32px] md:text-[40px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-4"
+        style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+      >
+        Never miss a drop.
+      </h2>
+      <p className="text-[15px] leading-[1.55] mb-8 max-w-[420px] mx-auto" style={{ color: '#8a8a8a' }}>
+        Get early access to events, parties, and members-only experiences.
+      </p>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col sm:flex-row gap-2.5 max-w-[460px] mx-auto"
+      >
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          placeholder="Email or phone number"
+          className="flex-1 px-5 py-3.5 rounded-full text-[14px] outline-none border transition-colors focus:border-white/30"
+          style={{
+            background: '#141414',
+            borderColor: 'rgba(255,255,255,0.1)',
+            color: '#f5f5f5',
+          }}
+        />
+        <button
+          type="submit"
+          className="px-7 py-3.5 rounded-full text-[12px] font-semibold tracking-[0.14em] transition-all hover:-translate-y-0.5 whitespace-nowrap"
+          style={{ background: '#ffffff', color: '#0a0a0a' }}
+        >
+          NOTIFY ME
+        </button>
+      </form>
+      <p className="text-[11px] mt-4" style={{ color: '#555' }}>
+        No spam. Unsubscribe anytime.
+      </p>
+    </div>
+  );
+}
 
 export default function HomePage() {
   return (
@@ -33,14 +121,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SLOGAN */}
-      <section className="max-w-[1100px] mx-auto px-6 py-20 text-center">
-        <h2
-          className="text-[44px] md:text-[56px] font-extrabold -tracking-[0.03em] leading-[1.1]"
-          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-        >
-          The Frequency of Us
-        </h2>
+      {/* SIGNUP */}
+      <section className="max-w-[1100px] mx-auto px-6 py-24">
+        <SignupForm />
       </section>
 
       <section className="max-w-[1100px] mx-auto px-6 pb-32">
