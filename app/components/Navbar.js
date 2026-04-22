@@ -20,11 +20,8 @@ export default function Navbar() {
   };
 
   return (
-    <div className="flex justify-center pt-5 px-6">
-      <nav
-        className="flex items-center justify-between w-full max-w-[1100px] rounded-full px-9 py-5 border"
-        style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.06)' }}
-      >
+    <div className="flex justify-center pt-8 px-6">
+      <nav className="flex items-center justify-between w-full max-w-[1100px]">
         <Link
           href="/"
           className="font-bold text-[15px] tracking-[0.12em] text-white"

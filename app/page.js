@@ -18,7 +18,7 @@ const waysWeDoIt = [
 export default function HomePage() {
   return (
     <>
-      <section className="relative mx-auto max-w-[1100px] mt-6 mb-20 rounded-[18px] overflow-hidden bg-[#111]" style={{ aspectRatio: '16 / 7.3' }}>
+      <section className="relative mx-auto max-w-[1100px] mt-6 rounded-[18px] overflow-hidden bg-[#111]" style={{ aspectRatio: '16 / 7.3' }}>
         <img
           src="https://images.unsplash.com/photo-1571266028243-d220c6a55fab?w=2000&q=80"
           alt="Basement Beats Showcase"
@@ -31,6 +31,16 @@ export default function HomePage() {
             Basement Beats Showcase
           </div>
         </div>
+      </section>
+
+      {/* SLOGAN */}
+      <section className="max-w-[1100px] mx-auto px-6 py-20 text-center">
+        <h2
+          className="text-[44px] md:text-[56px] font-extrabold -tracking-[0.03em] leading-[1.1]"
+          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+        >
+          The Frequency of Us
+        </h2>
       </section>
 
       <section className="max-w-[1100px] mx-auto px-6 pb-32">
