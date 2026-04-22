@@ -173,6 +173,62 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* MAP */}
+      <section className="max-w-[1100px] mx-auto px-6 py-24">
+        <div className="mb-8 text-center">
+          <div
+            className="inline-block text-[11px] font-semibold tracking-[0.2em] px-3.5 py-1.5 rounded-full mb-4"
+            style={{
+              color: '#8a8a8a',
+              border: '1px solid rgba(255,255,255,0.1)',
+            }}
+          >
+            FIND US
+          </div>
+          <h2
+            className="text-[32px] md:text-[40px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-3"
+            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+          >
+            4319 Terry-O Ln
+          </h2>
+          <p className="text-[15px]" style={{ color: '#8a8a8a' }}>
+            Austin, TX 78745
+          </p>
+        </div>
+
+        <div
+          className="rounded-[18px] overflow-hidden border"
+          style={{
+            borderColor: 'rgba(255,255,255,0.08)',
+            aspectRatio: '16 / 7',
+          }}
+        >
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-97.8270%2C30.2110%2C-97.8070%2C30.2310&layer=mapnik&marker=30.2210%2C-97.8170"
+            style={{ width: '100%', height: '100%', border: 0, filter: 'invert(0.9) hue-rotate(180deg) saturate(0.3)' }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Stardust Garage location"
+          />
+        </div>
+
+        <div className="mt-6 text-center">
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=4319+Terry-O+Ln+Austin+TX+78745"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-[13px] font-semibold tracking-[0.12em] transition-opacity hover:opacity-70"
+            style={{ color: '#f5f5f5' }}
+          >
+            GET DIRECTIONS
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </a>
+        </div>
+      </section>
     </>
   );
 }
