@@ -1,24 +1,32 @@
 const venues = [
   {
-    name: 'Main Stage',
-    capacity: '300 people',
-    price: '$800/night',
-    icon: 'music',
-    features: ['Professional sound system', 'Stage lighting', 'Green rooms', 'Full bar'],
-  },
-  {
-    name: 'Basement',
-    capacity: '150 people',
-    price: '$400/night',
-    icon: 'speaker',
-    features: ['Intimate setting', 'DJ booth', 'Sound system', 'Bar service'],
-  },
-  {
-    name: 'Warehouse Floor',
-    capacity: '500 people',
-    price: '$1,200/night',
+    name: 'Micro Parties / Birthdays',
     icon: 'users',
-    features: ['Open layout', 'Industrial aesthetic', 'Full production support', 'Multiple bars'],
+    features: [
+      'Turn-key (just show up and party)',
+      'Up to 44 people',
+    ],
+    cta: { label: 'BOOK NOW', href: '#' },
+  },
+  {
+    name: 'Host-Your-Own Experiences',
+    icon: 'spark',
+    features: [
+      'Creators',
+      'Workshops',
+      'Facilitators',
+    ],
+    cta: { label: 'BOOK NOW', href: '#' },
+  },
+  {
+    name: 'Entire Space',
+    icon: 'building',
+    features: [
+      'Weekends only',
+      'Turn-key',
+      'Work with SDG team to curate your event',
+    ],
+    cta: { label: 'INQUIRE', href: '/inquire' },
   },
 ];
 
@@ -34,30 +42,36 @@ function VenueIcon({ name }) {
     strokeLinejoin: 'round',
     style: { flexShrink: 0, marginTop: 2 },
   };
-  if (name === 'music') {
+  if (name === 'users') {
     return (
       <svg {...common}>
-        <path d="M9 18V5l12-2v13" />
-        <circle cx="6" cy="18" r="3" />
-        <circle cx="18" cy="16" r="3" />
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
       </svg>
     );
   }
-  if (name === 'speaker') {
+  if (name === 'spark') {
     return (
       <svg {...common}>
-        <rect x="4" y="2" width="16" height="20" rx="2" />
-        <circle cx="12" cy="9" r="2.5" />
-        <circle cx="12" cy="16" r="3.5" />
+        <path d="M12 2v4" />
+        <path d="M12 18v4" />
+        <path d="m4.93 4.93 2.83 2.83" />
+        <path d="m16.24 16.24 2.83 2.83" />
+        <path d="M2 12h4" />
+        <path d="M18 12h4" />
+        <path d="m4.93 19.07 2.83-2.83" />
+        <path d="m16.24 7.76 2.83-2.83" />
       </svg>
     );
   }
   return (
     <svg {...common}>
-      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-      <circle cx="9" cy="7" r="4" />
-      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <path d="M9 9h6" />
+      <path d="M9 13h6" />
+      <path d="M9 17h4" />
     </svg>
   );
 }
@@ -82,11 +96,8 @@ export default function VenueRentalPage() {
             <div>
               <div className="flex items-start gap-4 mb-[22px]">
                 <VenueIcon name={venue.icon} />
-                <div>
-                  <div className="text-[22px] font-bold -tracking-[0.01em] mb-1" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                    {venue.name}
-                  </div>
-                  <div className="text-sm" style={{ color: '#8a8a8a' }}>{venue.capacity}</div>
+                <div className="text-[22px] font-bold -tracking-[0.01em]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                  {venue.name}
                 </div>
               </div>
               <ul className="list-none">
@@ -98,13 +109,13 @@ export default function VenueRentalPage() {
                 ))}
               </ul>
             </div>
-            <div className="flex flex-col items-end gap-4 text-right">
-              <div className="text-[22px] font-bold -tracking-[0.01em] whitespace-nowrap" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                {venue.price}
-              </div>
-              <button className="bg-white text-[#0a0a0a] px-[22px] py-2.5 rounded-full text-xs font-semibold tracking-[0.12em] hover:bg-gray-200 transition-all hover:-translate-y-0.5">
-                BOOK NOW
-              </button>
+            <div className="flex flex-col items-end justify-center">
+              <a
+                href={venue.cta.href}
+                className="bg-white text-[#0a0a0a] px-[22px] py-2.5 rounded-full text-xs font-semibold tracking-[0.12em] hover:bg-gray-200 transition-all hover:-translate-y-0.5 whitespace-nowrap"
+              >
+                {venue.cta.label}
+              </a>
             </div>
           </div>
         ))}
@@ -123,10 +134,11 @@ export default function VenueRentalPage() {
               Equipment &amp; Staff
             </h3>
             <ul className="list-none text-sm leading-[2]" style={{ color: '#8a8a8a' }}>
-              <li>Sound engineer on-site</li>
-              <li>Lighting technician</li>
-              <li>Security personnel</li>
-              <li>Bar staff (if alcohol service)</li>
+              <li>4-point L-Acoustics Sound System</li>
+              <li>3 CDJ-3000s</li>
+              <li>V10 Mixer</li>
+              <li>Security personnel (if required)</li>
+              <li>Bar staff</li>
             </ul>
           </div>
           <div>
@@ -137,7 +149,6 @@ export default function VenueRentalPage() {
               <li>Setup and breakdown assistance</li>
               <li>Coat check service</li>
               <li>Ticket scanning system</li>
-              <li>Social media promotion</li>
             </ul>
           </div>
         </div>
