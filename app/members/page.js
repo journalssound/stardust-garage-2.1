@@ -5,8 +5,9 @@ const plans = [
     period: '/ month',
     featured: false,
     benefits: [
-      'Coworking hours access from 8am – 6pm, Monday thru Friday',
+      'Coworking hours access from 8am – 6pm, M-F',
       '3 guest passes per month',
+      'Access to a curated community of artists, builders, and culturally aligned individuals',
     ],
   },
   {
@@ -66,15 +67,6 @@ export default function MembersPage() {
                 color: isFeatured ? '#0a0a0a' : '#f5f5f5',
               }}
             >
-              {isFeatured && (
-                <span
-                  className="absolute top-5 right-5 text-[10px] font-bold tracking-[0.16em] px-3 py-1.5 rounded-full"
-                  style={{ background: '#0a0a0a', color: '#f5f5f5' }}
-                >
-                  MOST POPULAR
-                </span>
-              )}
-
               <h3
                 className="text-[24px] font-bold -tracking-[0.01em] mb-5"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
