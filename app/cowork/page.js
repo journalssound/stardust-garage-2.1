@@ -1,8 +1,8 @@
 const features = [
-  { title: 'High-Speed Internet', desc: 'Fiber optic connection for seamless work', icon: 'wifi' },
-  { title: 'Café & Bar', desc: 'Fuel your creativity with our espresso bar', icon: 'coffee' },
-  { title: 'Inspiring Environment', desc: 'Work surrounded by music culture', icon: 'music' },
-  { title: 'Community Access', desc: 'Network with artists and creatives', icon: 'users' },
+  { title: 'High-Speed Internet', desc: '1,000mbps of lightning-fast & reliable internet.', icon: 'wifi' },
+  { title: 'Bar & AI Vending Machine', desc: 'We have an assortment of curated beverages to choose from, including coffee, kava, kanna, thc-a, cacao, plant-based protein shakes, organic juices, & more.', icon: 'coffee' },
+  { title: 'Cozy AF', desc: "Most likely the coziest place you've ever been to outside of your own living room.", icon: 'music' },
+  { title: 'Curated Access', desc: 'Coworking hours are explicitly for Members and their limited number of guests. All guests are subject to approval by staff because this is a Community House and we want you to feel at home every time you step through our doors.', icon: 'users' },
 ];
 
 function Icon({ name }) {
