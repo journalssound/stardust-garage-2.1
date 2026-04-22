@@ -13,9 +13,10 @@ const events = [
 ];
 
 const waysWeDoIt = [
-  { title: 'State-of-the-Art Sound', desc: 'Experience a performance like never before, with cutting-edge acoustics designed for live music.', learnMore: true },
-  { title: 'Iconic Atmosphere', desc: 'Our venue is renowned for its intimate setting that brings you closer to the artists you love.' },
-  { title: 'Capacity & Flexibility', desc: "Whether it's a sold-out show for 500 or an intimate showcase, Stardust Garage adapts to create the perfect vibe." },
+  { title: 'Work hard, play hard', desc: "M–F we offer the cowork experience that Creators and Builders like yourself have been craving. After working hours and weekends, we offer dance music experiences like you won't find anywhere in Austin." },
+  { title: 'Presence First', desc: 'Our policy is "being where your feet are". We do not allow photography/videography on premises. This is born out of a philosophy of magnetism and human-connection.' },
+  { title: 'State-of-the-Art Sound', desc: '4-point L-Acoustics Sound System. We hear many times on the dance floor "wtf this is the best sound I\'ve ever heard".' },
+  { title: 'Legendary Atmosphere', desc: 'Quite possibly the coziest venue on planet earth. "It feels like I\'m in my living room."' },
 ];
 
 function SignupForm() {
@@ -152,20 +153,13 @@ export default function HomePage() {
             <span className="inline-block w-[7px] h-[7px] rounded-full" style={{ background: '#0a0a0a' }} />
             OUR WAY OF DOING IT
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 px-[80px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-14 px-[80px]">
             {waysWeDoIt.map((item) => (
-              <div key={item.title} className="max-w-[430px]">
-                <div className="flex items-baseline gap-[18px] mb-[18px]">
-                  <h3 className="text-[34px] font-extrabold -tracking-[0.02em] leading-[1.1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                    {item.title}
-                  </h3>
-                  {item.learnMore && (
-                    <a href="#" className="text-[11px] font-semibold tracking-[0.14em] whitespace-nowrap hover:underline">
-                      (LEARN MORE)
-                    </a>
-                  )}
-                </div>
-                <p className="text-[15px] leading-[1.55]" style={{ color: '#555', maxWidth: '360px' }}>
+              <div key={item.title} className="max-w-[480px]">
+                <h3 className="text-[32px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-[18px]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                  {item.title}
+                </h3>
+                <p className="text-[15px] leading-[1.6]" style={{ color: '#555' }}>
                   {item.desc}
                 </p>
               </div>
