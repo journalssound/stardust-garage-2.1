@@ -2,9 +2,11 @@ const venues = [
   {
     name: 'Micro Parties / Birthdays',
     icon: 'users',
+    startingPrice: 'Starting at $125/hr',
     features: [
       'Turn-key (just show up and party)',
       'Up to 44 people',
+      'Currently only available 7pm and later M–Th',
     ],
     cta: { label: 'BOOK NOW', href: '#' },
   },
@@ -109,7 +111,15 @@ export default function VenueRentalPage() {
                 ))}
               </ul>
             </div>
-            <div className="flex flex-col items-end justify-center">
+            <div className="flex flex-col items-end justify-center gap-3">
+              {venue.startingPrice && (
+                <div
+                  className="text-[13px] font-medium whitespace-nowrap"
+                  style={{ color: '#8a8a8a' }}
+                >
+                  {venue.startingPrice}
+                </div>
+              )}
               <a
                 href={venue.cta.href}
                 className="px-[22px] py-2.5 rounded-full text-xs font-semibold tracking-[0.12em] hover:bg-gray-200 transition-all hover:-translate-y-0.5 whitespace-nowrap"
