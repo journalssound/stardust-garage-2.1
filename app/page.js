@@ -34,9 +34,9 @@ function SignupForm() {
       <div className="max-w-[520px] mx-auto text-center">
         <div
           className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-6"
-          style={{ background: 'rgba(255,255,255,0.08)' }}
+          style={{ background: 'rgba(0,0,0,0.08)' }}
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f5f5f5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
@@ -46,7 +46,7 @@ function SignupForm() {
         >
           You&apos;re on the list
         </h3>
-        <p className="text-[15px] leading-[1.6]" style={{ color: '#8a8a8a' }}>
+        <p className="text-[15px] leading-[1.6]" style={{ color: '#555' }}>
           We&apos;ll be in touch with the next drop.
         </p>
       </div>
@@ -58,8 +58,8 @@ function SignupForm() {
       <div
         className="inline-block text-[11px] font-semibold tracking-[0.2em] px-3.5 py-1.5 rounded-full mb-6"
         style={{
-          color: '#8a8a8a',
-          border: '1px solid rgba(255,255,255,0.1)',
+          color: '#555',
+          border: '1px solid rgba(0,0,0,0.15)',
         }}
       >
         STAY IN THE LOOP
@@ -70,7 +70,7 @@ function SignupForm() {
       >
         Never miss a drop.
       </h2>
-      <p className="text-[15px] leading-[1.55] mb-8 max-w-[420px] mx-auto" style={{ color: '#8a8a8a' }}>
+      <p className="text-[15px] leading-[1.55] mb-8 max-w-[420px] mx-auto" style={{ color: '#555' }}>
         Get early access to events, parties, and members-only experiences.
       </p>
       <form
@@ -82,22 +82,22 @@ function SignupForm() {
           value={value}
           onChange={(e) => setValue(e.target.value)}
           placeholder="Email or phone number"
-          className="flex-1 px-5 py-3.5 rounded-full text-[14px] outline-none border transition-colors focus:border-white/30"
+          className="flex-1 px-5 py-3.5 rounded-full text-[14px] outline-none border transition-colors focus:border-black/40"
           style={{
-            background: '#141414',
-            borderColor: 'rgba(255,255,255,0.1)',
-            color: '#f5f5f5',
+            background: '#ffffff',
+            borderColor: 'rgba(0,0,0,0.15)',
+            color: '#0a0a0a',
           }}
         />
         <button
           type="submit"
           className="px-7 py-3.5 rounded-full text-[12px] font-semibold tracking-[0.14em] transition-all hover:-translate-y-0.5 whitespace-nowrap"
-          style={{ background: '#ffffff', color: '#0a0a0a' }}
+          style={{ background: '#0a0a0a', color: '#ffffff' }}
         >
           NOTIFY ME
         </button>
       </form>
-      <p className="text-[11px] mt-4" style={{ color: '#555' }}>
+      <p className="text-[11px] mt-4" style={{ color: '#888' }}>
         No spam. Unsubscribe anytime.
       </p>
     </div>
@@ -123,7 +123,7 @@ export default function HomePage() {
       </section>
 
       {/* SIGNUP */}
-      <section className="max-w-[1100px] mx-auto px-6 py-24">
+      <section className="py-24 px-6" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
         <SignupForm />
       </section>
 
@@ -184,7 +184,7 @@ export default function HomePage() {
             className="text-[32px] md:text-[40px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-3"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
-            4319 Terry-O Ln
+            St. Elmo Arts District
           </h2>
           <p className="text-[15px]" style={{ color: '#8a8a8a' }}>
             Austin, TX 78745
