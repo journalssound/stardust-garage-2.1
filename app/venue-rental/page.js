@@ -112,7 +112,8 @@ export default function VenueRentalPage() {
             <div className="flex flex-col items-end justify-center">
               <a
                 href={venue.cta.href}
-                className="bg-white text-[#0a0a0a] px-[22px] py-2.5 rounded-full text-xs font-semibold tracking-[0.12em] hover:bg-gray-200 transition-all hover:-translate-y-0.5 whitespace-nowrap"
+                className="px-[22px] py-2.5 rounded-full text-xs font-semibold tracking-[0.12em] hover:bg-gray-200 transition-all hover:-translate-y-0.5 whitespace-nowrap"
+                style={{ background: '#ffffff', color: '#0a0a0a' }}
               >
                 {venue.cta.label}
               </a>
