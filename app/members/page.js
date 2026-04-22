@@ -121,6 +121,35 @@ export default function MembersPage() {
           );
         })}
       </div>
+
+      {/* LOCKERS ADD-ON */}
+      <div
+        className="mt-6 rounded-[18px] p-10 border flex flex-col md:flex-row md:items-center gap-8"
+        style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
+      >
+        <div className="md:w-[280px] flex-shrink-0">
+          <h3
+            className="text-[24px] font-bold -tracking-[0.01em] mb-1.5"
+            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+          >
+            Lockers
+          </h3>
+          <p className="text-[13px]" style={{ color: '#8a8a8a' }}>
+            Requires membership
+          </p>
+        </div>
+
+        <ul className="list-none flex-1">
+          <li className="flex items-start gap-3 py-1.5 text-[14.5px] leading-[1.5]">
+            <CheckIcon />
+            <span>Two sizes available: Small and Large</span>
+          </li>
+          <li className="flex items-start gap-3 py-1.5 text-[14.5px] leading-[1.5]">
+            <CheckIcon />
+            <span>Each locker comes with a combination lock and fast charger inside</span>
+          </li>
+        </ul>
+      </div>
     </main>
   );
 }
