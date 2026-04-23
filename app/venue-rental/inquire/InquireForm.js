@@ -530,7 +530,7 @@ export default function InquireForm({ inquiryType, typeLabel }) {
               className="mt-1 w-4 h-4 flex-shrink-0 accent-white"
             />
             <span className="text-[14px] leading-[1.6]" style={{ color: '#d4d4d4' }}>
-              By checking this box, and submitting this form, you acknowledge that Stardust Garage is an intentional, creative venue operating under Chasing Magic LLC. All rentals are subject to management approval, availability and event alignment with our community values. <span style={{ color: '#a0a0a0' }}>*</span>
+              By checking this box, and submitting this form, you acknowledge that Stardust Garage is an intentional, creative venue. All rentals are subject to management approval, availability and event alignment with our community values. <span style={{ color: '#a0a0a0' }}>*</span>
             </span>
           </label>
         </section>

@@ -187,7 +187,7 @@ export default async function InquiryDetail({ params }) {
         <div className="flex items-start gap-3 text-[14px]">
           <span>{i.acknowledged_terms ? '✓' : '✗'}</span>
           <span style={{ color: i.acknowledged_terms ? '#f5f5f5' : '#888' }}>
-            Acknowledged Stardust Garage operates under Chasing Magic LLC, and rentals are subject to management approval.
+            Acknowledged Stardust Garage is an intentional, creative venue and rentals are subject to management approval.
           </span>
         </div>
       </section>
