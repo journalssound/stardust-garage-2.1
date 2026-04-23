@@ -1,6 +1,9 @@
+import Link from 'next/link';
+
 const plans = [
   {
     name: 'Cowork',
+    slug: 'cowork',
     price: '$155',
     period: '/ month',
     featured: false,
@@ -12,6 +15,7 @@ const plans = [
   },
   {
     name: 'Cowork + Party',
+    slug: 'cowork-party',
     price: '$225',
     period: '/ month',
     featured: true,
@@ -59,7 +63,7 @@ export default function MembersPage() {
           const isFeatured = plan.featured;
           return (
             <div
-              key={plan.name}
+              key={plan.slug}
               className="relative rounded-[18px] p-10 border flex flex-col"
               style={{
                 background: isFeatured ? '#f5f5f5' : '#141414',
@@ -108,21 +112,22 @@ export default function MembersPage() {
                 ))}
               </ul>
 
-              <button
-                className="w-full py-4 rounded-full text-[12px] font-semibold tracking-[0.16em] transition-all hover:-translate-y-0.5"
+              <Link
+                href={`/members/apply/${plan.slug}`}
+                className="w-full py-4 rounded-full text-[12px] font-semibold tracking-[0.16em] transition-all hover:-translate-y-0.5 text-center"
                 style={{
                   background: isFeatured ? '#0a0a0a' : '#f5f5f5',
                   color: isFeatured ? '#f5f5f5' : '#0a0a0a',
                 }}
               >
                 BECOME A MEMBER
-              </button>
+              </Link>
             </div>
           );
         })}
       </div>
 
-      {/* LOCKERS ADD-ON */}
+      {/* Lockers Add-on */}
       <div
         className="mt-6 rounded-[18px] p-10 border flex flex-col md:flex-row md:items-center gap-8"
         style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
