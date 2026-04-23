@@ -39,28 +39,33 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className="relative mx-auto max-w-[1100px] mt-6 rounded-[18px] overflow-hidden bg-[#111]" style={{ aspectRatio: '16 / 7.3' }}>
-        {heroImage && (
-          <img
-            src={heroImage}
-            alt={heroTitle || 'Stardust Garage'}
-            className="absolute inset-0 w-full h-full object-cover brightness-75"
-          />
-        )}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%)' }} />
-        <div className="absolute left-10 bottom-9 text-white">
-          {heroDate && (
-            <div className="text-xs font-medium tracking-[0.16em] mb-3.5 opacity-85">{heroDate}</div>
+      <div className="px-12 md:px-20 mt-12 mb-16">
+        <section
+          className="relative mx-auto max-w-[1180px] rounded-[20px] overflow-hidden bg-[#111]"
+          style={{ aspectRatio: '16 / 7' }}
+        >
+          {heroImage && (
+            <img
+              src={heroImage}
+              alt={heroTitle || 'Stardust Garage'}
+              className="absolute inset-0 w-full h-full object-cover brightness-75"
+            />
           )}
-          {heroTitle && (
-            <div className="text-[30px] font-bold -tracking-[0.01em]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-              {heroTitle}
-            </div>
-          )}
-        </div>
-      </section>
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%)' }} />
+          <div className="absolute left-10 bottom-9 text-white">
+            {heroDate && (
+              <div className="text-xs font-medium tracking-[0.16em] mb-3.5 opacity-85">{heroDate}</div>
+            )}
+            {heroTitle && (
+              <div className="text-[30px] font-bold -tracking-[0.01em]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                {heroTitle}
+              </div>
+            )}
+          </div>
+        </section>
+      </div>
 
-      <section className="py-24 px-6" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
+      <section className="py-16 px-6" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
         <SignupForm />
       </section>
 
