@@ -1,3 +1,8 @@
+import { createClient } from '@/lib/supabase/server';
+import RotatingHeader from '../components/RotatingHeader';
+
+export const revalidate = 0;
+
 const features = [
   { title: 'High-Speed Internet', desc: '1,000mbps of lightning-fast & reliable internet.', icon: 'wifi' },
   { title: 'Bar & AI Vending Machine', desc: 'We have an assortment of curated beverages to choose from, including coffee, kava, kanna, thc-a, cacao, plant-based protein shakes, organic juices, & more.', icon: 'coffee' },
@@ -57,41 +62,48 @@ function Icon({ name }) {
   );
 }
 
-export default function CoworkPage() {
+export default async function CoworkPage() {
+  const supabase = await createClient();
+  const { data: images } = await supabase
+    .from('gallery_images')
+    .select('*')
+    .eq('gallery_key', 'cowork_header')
+    .order('sort_order', { ascending: true });
+
   return (
-    <main className="max-w-[1100px] mx-auto px-6 py-20">
-      <h1 className="text-[52px] font-extrabold -tracking-[0.02em] mb-[18px] leading-[1.1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-        COWORK SPACE
-      </h1>
-      <p className="text-base leading-[1.55] max-w-[620px] mb-14" style={{ color: '#8a8a8a' }}>
-        A creative workspace for musicians, artists, and remote workers who thrive in an inspiring environment.
-      </p>
+    <>
+      <RotatingHeader images={images || []}>
+        <div className="text-[30px] font-bold -tracking-[0.01em]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          Cowork
+        </div>
+      </RotatingHeader>
 
-      <div className="w-full rounded-[14px] overflow-hidden mb-14 bg-[#111]" style={{ aspectRatio: '16 / 9' }}>
-        <img
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80"
-          alt="Cowork space interior"
-          className="w-full h-full object-cover"
-        />
-      </div>
+      <main className="max-w-[1100px] mx-auto px-6 py-20">
+        <h1 className="text-[52px] font-extrabold -tracking-[0.02em] mb-[18px] leading-[1.1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          COWORK SPACE
+        </h1>
+        <p className="text-base leading-[1.55] max-w-[620px] mb-14" style={{ color: '#8a8a8a' }}>
+          A creative workspace for musicians, artists, and remote workers who thrive in an inspiring environment.
+        </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {features.map((f) => (
-          <div
-            key={f.title}
-            className="rounded-[14px] p-9 border transition-transform hover:-translate-y-1"
-            style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
-          >
-            <Icon name={f.icon} />
-            <h3 className="text-[19px] font-bold mb-2.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-              {f.title}
-            </h3>
-            <p className="text-sm leading-[1.55]" style={{ color: '#8a8a8a' }}>
-              {f.desc}
-            </p>
-          </div>
-        ))}
-      </div>
-    </main>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {features.map((f) => (
+            <div
+              key={f.title}
+              className="rounded-[14px] p-9 border transition-transform hover:-translate-y-1"
+              style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
+            >
+              <Icon name={f.icon} />
+              <h3 className="text-[19px] font-bold mb-2.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                {f.title}
+              </h3>
+              <p className="text-sm leading-[1.55]" style={{ color: '#8a8a8a' }}>
+                {f.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </main>
+    </>
   );
 }

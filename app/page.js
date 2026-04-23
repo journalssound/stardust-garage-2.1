@@ -20,33 +20,43 @@ function formatEventDate(dateString) {
   });
 }
 
+async function getSetting(supabase, key) {
+  const { data } = await supabase.from('site_settings').select('value').eq('key', key).single();
+  return data?.value || '';
+}
+
 export default async function HomePage() {
   const supabase = await createClient();
-  const { data: events, error } = await supabase
-    .from('events')
-    .select('*')
-    .order('event_date', { ascending: true });
 
-  if (error) {
-    console.error('Error fetching events:', error);
-  }
+  const [heroImage, heroDate, heroTitle, eventsResult] = await Promise.all([
+    getSetting(supabase, 'homepage_hero_image'),
+    getSetting(supabase, 'homepage_hero_date'),
+    getSetting(supabase, 'homepage_hero_title'),
+    supabase.from('events').select('*').order('event_date', { ascending: true }),
+  ]);
 
-  const eventList = events || [];
+  const eventList = eventsResult.data || [];
 
   return (
     <>
       <section className="relative mx-auto max-w-[1100px] mt-6 rounded-[18px] overflow-hidden bg-[#111]" style={{ aspectRatio: '16 / 7.3' }}>
-        <img
-          src="https://images.unsplash.com/photo-1571266028243-d220c6a55fab?w=2000&q=80"
-          alt="Basement Beats Showcase"
-          className="absolute inset-0 w-full h-full object-cover brightness-75"
-        />
+        {heroImage && (
+          <img
+            src={heroImage}
+            alt={heroTitle || 'Stardust Garage'}
+            className="absolute inset-0 w-full h-full object-cover brightness-75"
+          />
+        )}
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%)' }} />
         <div className="absolute left-10 bottom-9 text-white">
-          <div className="text-xs font-medium tracking-[0.16em] mb-3.5 opacity-85">MAY 3, 2026</div>
-          <div className="text-[30px] font-bold -tracking-[0.01em]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Basement Beats Showcase
-          </div>
+          {heroDate && (
+            <div className="text-xs font-medium tracking-[0.16em] mb-3.5 opacity-85">{heroDate}</div>
+          )}
+          {heroTitle && (
+            <div className="text-[30px] font-bold -tracking-[0.01em]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              {heroTitle}
+            </div>
+          )}
         </div>
       </section>
 
