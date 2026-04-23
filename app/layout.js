@@ -1,5 +1,6 @@
 import './globals.css';
 import Navbar from './components/Navbar';
+import CosmosBackground from './components/CosmosBackground';
 
 export const metadata = {
   title: 'Stardust Garage',
@@ -18,8 +19,11 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <Navbar />
-        {children}
+        <CosmosBackground />
+        <div className="relative z-10">
+          <Navbar />
+          {children}
+        </div>
       </body>
     </html>
   );
