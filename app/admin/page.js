@@ -23,7 +23,7 @@ export default async function AdminDashboard() {
     .order('event_date', { ascending: true });
 
   return (
-    <main className="max-w-[1100px] mx-auto px-6 py-16">
+    <main className="max-w-[1200px] mx-auto px-6 py-16">
       <div className="flex items-center justify-between mb-12">
         <div>
           <h1
@@ -40,54 +40,62 @@ export default async function AdminDashboard() {
       </div>
 
       {/* Quick links to sub-sections */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-14">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-14">
         <Link
           href="/admin"
-          className="rounded-[14px] p-6 border transition-colors"
+          className="rounded-[14px] p-5 border transition-colors"
           style={{ background: '#1a1a1a', borderColor: 'rgba(255,255,255,0.15)' }}
         >
-          <div className="text-[11px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>CURRENT</div>
-          <div className="text-[16px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Events</div>
+          <div className="text-[10px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>CURRENT</div>
+          <div className="text-[15px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Events</div>
         </Link>
         <Link
           href="/admin/applications"
-          className="rounded-[14px] p-6 border transition-colors hover:border-white/20"
+          className="rounded-[14px] p-5 border transition-colors hover:border-white/20"
           style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
         >
-          <div className="text-[11px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>REVIEW</div>
-          <div className="text-[16px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Applications</div>
+          <div className="text-[10px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>REVIEW</div>
+          <div className="text-[15px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Applications</div>
         </Link>
         <Link
           href="/admin/venue-inquiries"
-          className="rounded-[14px] p-6 border transition-colors hover:border-white/20"
+          className="rounded-[14px] p-5 border transition-colors hover:border-white/20"
           style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
         >
-          <div className="text-[11px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>REVIEW</div>
-          <div className="text-[16px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Venue Inquiries</div>
+          <div className="text-[10px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>REVIEW</div>
+          <div className="text-[15px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Venue Inquiries</div>
+        </Link>
+        <Link
+          href="/admin/collaborations"
+          className="rounded-[14px] p-5 border transition-colors hover:border-white/20"
+          style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
+        >
+          <div className="text-[10px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>REVIEW</div>
+          <div className="text-[15px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Collaborations</div>
         </Link>
         <Link
           href="/admin/signups"
-          className="rounded-[14px] p-6 border transition-colors hover:border-white/20"
+          className="rounded-[14px] p-5 border transition-colors hover:border-white/20"
           style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
         >
-          <div className="text-[11px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>VIEW</div>
-          <div className="text-[16px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Signups</div>
+          <div className="text-[10px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>VIEW</div>
+          <div className="text-[15px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Signups</div>
         </Link>
         <Link
           href="/admin/settings"
-          className="rounded-[14px] p-6 border transition-colors hover:border-white/20"
+          className="rounded-[14px] p-5 border transition-colors hover:border-white/20"
           style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
         >
-          <div className="text-[11px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>MANAGE</div>
-          <div className="text-[16px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Settings</div>
+          <div className="text-[10px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>MANAGE</div>
+          <div className="text-[15px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Settings</div>
         </Link>
         <Link
           href="/admin/galleries"
-          className="rounded-[14px] p-6 border transition-colors hover:border-white/20"
+          className="rounded-[14px] p-5 border transition-colors hover:border-white/20"
           style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
         >
-          <div className="text-[11px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>MANAGE</div>
-          <div className="text-[16px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Galleries</div>
+          <div className="text-[10px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>MANAGE</div>
+          <div className="text-[15px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Galleries</div>
         </Link>
       </div>
 
