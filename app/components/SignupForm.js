@@ -1,14 +1,43 @@
 'use client';
 
 import { useState } from 'react';
+import { createClient } from '@/lib/supabase/client';
+
+function detectContactType(value) {
+  const trimmed = value.trim();
+  if (/@/.test(trimmed) && /\./.test(trimmed)) return 'email';
+  if (/\d{7,}/.test(trimmed.replace(/\D/g, ''))) return 'phone';
+  return 'other';
+}
 
 export default function SignupForm() {
   const [value, setValue] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!value.trim()) return;
+    const trimmed = value.trim();
+    if (!trimmed) return;
+
+    setError('');
+    setSubmitting(true);
+
+    const supabase = createClient();
+    const { error: insertError } = await supabase.from('signups').insert({
+      contact: trimmed,
+      contact_type: detectContactType(trimmed),
+      source: 'homepage',
+    });
+
+    setSubmitting(false);
+
+    if (insertError) {
+      setError('Something went wrong. Please try again.');
+      return;
+    }
+
     setSubmitted(true);
   };
 
@@ -65,6 +94,7 @@ export default function SignupForm() {
           value={value}
           onChange={(e) => setValue(e.target.value)}
           placeholder="Email or phone number"
+          required
           className="flex-1 px-5 py-3.5 rounded-full text-[14px] outline-none border transition-colors focus:border-black/40"
           style={{
             background: '#ffffff',
@@ -74,12 +104,16 @@ export default function SignupForm() {
         />
         <button
           type="submit"
-          className="px-7 py-3.5 rounded-full text-[12px] font-semibold tracking-[0.14em] transition-all hover:-translate-y-0.5 whitespace-nowrap"
+          disabled={submitting}
+          className="px-7 py-3.5 rounded-full text-[12px] font-semibold tracking-[0.14em] transition-all hover:-translate-y-0.5 whitespace-nowrap disabled:opacity-50"
           style={{ background: '#0a0a0a', color: '#ffffff' }}
         >
-          NOTIFY ME
+          {submitting ? 'SUBMITTING...' : 'NOTIFY ME'}
         </button>
       </form>
+      {error && (
+        <p className="text-[12px] mt-3" style={{ color: '#c53030' }}>{error}</p>
+      )}
       <p className="text-[11px] mt-4" style={{ color: '#888' }}>
         No spam. Unsubscribe anytime.
       </p>
