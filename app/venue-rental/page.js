@@ -1,6 +1,9 @@
+import Link from 'next/link';
+
 const venues = [
   {
     name: 'Micro Parties / Birthdays',
+    slug: 'micro-parties',
     icon: 'users',
     startingPrice: 'Starting at $125/hr',
     features: [
@@ -8,27 +11,26 @@ const venues = [
       'Up to 44 people',
       'Currently only available 7pm and later M–Th',
     ],
-    cta: { label: 'BOOK NOW', href: '#' },
   },
   {
     name: 'Host-Your-Own Experiences',
+    slug: 'host-your-own',
     icon: 'spark',
     features: [
       'Creators',
       'Workshops',
       'Facilitators',
     ],
-    cta: { label: 'BOOK NOW', href: '#' },
   },
   {
     name: 'Entire Space',
+    slug: 'entire-space',
     icon: 'building',
     features: [
       'Weekends only',
       'Turn-key',
       'Work with SDG team to curate your event',
     ],
-    cta: { label: 'INQUIRE', href: '/inquire' },
   },
 ];
 
@@ -91,7 +93,7 @@ export default function VenueRentalPage() {
       <div className="flex flex-col gap-5">
         {venues.map((venue) => (
           <div
-            key={venue.name}
+            key={venue.slug}
             className="rounded-[18px] p-10 border grid gap-6"
             style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)', gridTemplateColumns: '1fr auto' }}
           >
@@ -120,13 +122,13 @@ export default function VenueRentalPage() {
                   {venue.startingPrice}
                 </div>
               )}
-              <a
-                href={venue.cta.href}
+              <Link
+                href={`/venue-rental/inquire?type=${venue.slug}`}
                 className="px-[22px] py-2.5 rounded-full text-xs font-semibold tracking-[0.12em] hover:bg-gray-200 transition-all hover:-translate-y-0.5 whitespace-nowrap"
                 style={{ background: '#ffffff', color: '#0a0a0a' }}
               >
-                {venue.cta.label}
-              </a>
+                INQUIRE
+              </Link>
             </div>
           </div>
         ))}
@@ -169,9 +171,13 @@ export default function VenueRentalPage() {
         <p className="text-[15px] mb-6" style={{ color: '#8a8a8a' }}>
           Interested in hosting an event? Get in touch for availability and custom packages.
         </p>
-        <a href="/about" className="inline-block bg-white text-[#0a0a0a] px-11 py-4 rounded-full text-[13px] font-semibold tracking-[0.14em] hover:bg-gray-200 transition-all hover:-translate-y-0.5">
-          CONTACT US
-        </a>
+        <Link
+          href="/venue-rental/inquire"
+          className="inline-block px-11 py-4 rounded-full text-[13px] font-semibold tracking-[0.14em] hover:bg-gray-200 transition-all hover:-translate-y-0.5"
+          style={{ background: '#ffffff', color: '#0a0a0a' }}
+        >
+          INQUIRE
+        </Link>
       </div>
     </main>
   );

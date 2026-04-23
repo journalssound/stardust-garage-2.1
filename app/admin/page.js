@@ -40,14 +40,14 @@ export default async function AdminDashboard() {
       </div>
 
       {/* Quick links to sub-sections */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-14">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-14">
         <Link
           href="/admin"
           className="rounded-[14px] p-6 border transition-colors"
           style={{ background: '#1a1a1a', borderColor: 'rgba(255,255,255,0.15)' }}
         >
           <div className="text-[11px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>CURRENT</div>
-          <div className="text-[18px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Events</div>
+          <div className="text-[16px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Events</div>
         </Link>
         <Link
           href="/admin/applications"
@@ -55,7 +55,15 @@ export default async function AdminDashboard() {
           style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
         >
           <div className="text-[11px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>REVIEW</div>
-          <div className="text-[18px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Applications</div>
+          <div className="text-[16px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Applications</div>
+        </Link>
+        <Link
+          href="/admin/venue-inquiries"
+          className="rounded-[14px] p-6 border transition-colors hover:border-white/20"
+          style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
+        >
+          <div className="text-[11px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>REVIEW</div>
+          <div className="text-[16px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Venue Inquiries</div>
         </Link>
         <Link
           href="/admin/signups"
@@ -63,7 +71,7 @@ export default async function AdminDashboard() {
           style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
         >
           <div className="text-[11px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>VIEW</div>
-          <div className="text-[18px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Signups</div>
+          <div className="text-[16px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Signups</div>
         </Link>
         <Link
           href="/admin/settings"
@@ -71,7 +79,7 @@ export default async function AdminDashboard() {
           style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
         >
           <div className="text-[11px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>MANAGE</div>
-          <div className="text-[18px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Site Settings</div>
+          <div className="text-[16px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Settings</div>
         </Link>
         <Link
           href="/admin/galleries"
@@ -79,7 +87,7 @@ export default async function AdminDashboard() {
           style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
         >
           <div className="text-[11px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>MANAGE</div>
-          <div className="text-[18px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Galleries</div>
+          <div className="text-[16px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Galleries</div>
         </Link>
       </div>
 
