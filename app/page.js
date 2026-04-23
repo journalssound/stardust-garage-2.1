@@ -9,11 +9,9 @@ const waysWeDoIt = [
   { title: 'Legendary Atmosphere', desc: 'Quite possibly the coziest venue on planet earth. "It feels like I\'m in my living room."' },
 ];
 
-// Disable caching so new events appear immediately after being added
 export const revalidate = 0;
 
 function formatEventDate(dateString) {
-  // Convert "2026-04-25" to "April 25, 2026"
   const date = new Date(dateString + 'T00:00:00');
   return date.toLocaleDateString('en-US', {
     year: 'numeric',
@@ -23,7 +21,6 @@ function formatEventDate(dateString) {
 }
 
 export default async function HomePage() {
-  // Fetch events from Supabase, sorted by date ascending
   const supabase = await createClient();
   const { data: events, error } = await supabase
     .from('events')
@@ -53,7 +50,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* SIGNUP */}
       <section className="py-24 px-6" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
         <SignupForm />
       </section>
@@ -68,22 +64,37 @@ export default async function HomePage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[22px]">
             {eventList.map((event) => (
-              <Link key={event.id} href={`/events/${event.slug}`} className="group block">
-                <div className="relative overflow-hidden rounded-[14px] bg-[#1a1a1a] transition-transform group-hover:-translate-y-1" style={{ aspectRatio: '3 / 4' }}>
-                  {event.image_url && (
-                    <img src={event.image_url} alt={event.title} className="w-full h-full object-cover" />
-                  )}
-                  <span className="absolute top-[18px] right-[18px] bg-white text-[#0a0a0a] px-4 py-2 rounded-full text-[11px] font-semibold tracking-[0.12em]">
+              <div key={event.id} className="relative group">
+                <Link href={`/events/${event.slug}`} className="block">
+                  <div className="relative overflow-hidden rounded-[14px] bg-[#1a1a1a] transition-transform group-hover:-translate-y-1" style={{ aspectRatio: '3 / 4' }}>
+                    {event.image_url && (
+                      <img src={event.image_url} alt={event.title} className="w-full h-full object-cover" />
+                    )}
+                  </div>
+                  <div className="text-xs mt-4 mb-2" style={{ color: '#8a8a8a' }}>
+                    {formatEventDate(event.event_date)}
+                  </div>
+                  <h3 className="text-[17px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                    {event.title}
+                  </h3>
+                </Link>
+
+                {event.ticket_url ? (
+                  <a
+                    href={event.ticket_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="absolute top-[18px] right-[18px] bg-white text-[#0a0a0a] px-4 py-2 rounded-full text-[11px] font-semibold tracking-[0.12em] hover:bg-gray-200 transition-colors z-10"
+                  >
                     BUY TICKETS
+                  </a>
+                ) : (
+                  <span className="absolute top-[18px] right-[18px] px-4 py-2 rounded-full text-[11px] font-semibold tracking-[0.12em] border pointer-events-none" style={{ borderColor: 'rgba(255,255,255,0.3)', color: '#f5f5f5', background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)' }}>
+                    PRIVATE
                   </span>
-                </div>
-                <div className="text-xs mt-4 mb-2" style={{ color: '#8a8a8a' }}>
-                  {formatEventDate(event.event_date)}
-                </div>
-                <h3 className="text-[17px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                  {event.title}
-                </h3>
-              </Link>
+                )}
+              </div>
             ))}
           </div>
         )}
@@ -110,7 +121,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* MAP */}
       <section className="max-w-[1100px] mx-auto px-6 py-24">
         <div className="mb-8 text-center">
           <div
@@ -166,7 +176,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* CONTACT */}
       <section className="py-24 px-12" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
         <div className="max-w-[1400px] mx-auto px-[80px]">
           <h2
