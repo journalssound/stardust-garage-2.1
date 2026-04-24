@@ -20,7 +20,8 @@ export default async function Navbar() {
             <img
               src={logoUrl}
               alt="Stardust Garage"
-              className="h-10 w-auto object-contain"
+              className="w-auto object-contain"
+              style={{ height: '55px' }}
             />
           ) : (
             <span

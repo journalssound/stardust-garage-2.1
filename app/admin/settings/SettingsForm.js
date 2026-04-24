@@ -176,7 +176,7 @@ export default function SettingsForm({ initialSettings }) {
         )}
 
         <p className="text-[11px] mt-4" style={{ color: '#555' }}>
-          Tip: use a transparent PNG or SVG. It displays at 40px height in the nav.
+          Tip: use a transparent PNG or SVG. It displays at 55px height in the nav.
         </p>
       </section>
 
