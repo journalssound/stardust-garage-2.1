@@ -20,10 +20,7 @@ async function getSetting(supabase, key) {
 export default async function HomePage() {
   const supabase = await createClient();
 
-  const [heroImage, heroDate, heroTitle, coworkCardImage, eventsCardImage, eventsResult] = await Promise.all([
-    getSetting(supabase, 'homepage_hero_image'),
-    getSetting(supabase, 'homepage_hero_date'),
-    getSetting(supabase, 'homepage_hero_title'),
+  const [coworkCardImage, eventsCardImage, eventsResult] = await Promise.all([
     getSetting(supabase, 'homepage_card_cowork_image'),
     getSetting(supabase, 'homepage_card_events_image'),
     supabase.from('events').select('*').order('event_date', { ascending: true }),
@@ -33,40 +30,13 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* HERO */}
-      <div className="px-12 md:px-20 mt-12 mb-16">
-        <section
-          className="relative mx-auto max-w-[1180px] rounded-[20px] overflow-hidden bg-[#111]"
-          style={{ aspectRatio: '16 / 7' }}
-        >
-          {heroImage && (
-            <img
-              src={heroImage}
-              alt={heroTitle || 'Stardust Garage'}
-              className="absolute inset-0 w-full h-full object-cover brightness-75"
-            />
-          )}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%)' }} />
-          <div className="absolute left-10 bottom-9 text-white">
-            {heroDate && (
-              <div className="text-xs font-medium tracking-[0.16em] mb-3.5 opacity-85">{heroDate}</div>
-            )}
-            {heroTitle && (
-              <div className="text-[30px] font-bold -tracking-[0.01em]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                {heroTitle}
-              </div>
-            )}
-          </div>
-        </section>
-      </div>
-
       {/* TWO-CARD EXPLORER */}
-      <section className="px-12 md:px-20 mb-24">
+      <section className="px-12 md:px-20 mt-12 mb-16">
         <div className="max-w-[1180px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           <Link
             href="/cowork"
             className="group relative overflow-hidden rounded-[20px] bg-[#111] transition-transform hover:-translate-y-1"
-            style={{ aspectRatio: '4 / 5' }}
+            style={{ aspectRatio: '16 / 14' }}
           >
             {coworkCardImage ? (
               <img
@@ -101,7 +71,7 @@ export default async function HomePage() {
           <Link
             href="/events"
             className="group relative overflow-hidden rounded-[20px] bg-[#111] transition-transform hover:-translate-y-1"
-            style={{ aspectRatio: '4 / 5' }}
+            style={{ aspectRatio: '16 / 14' }}
           >
             {eventsCardImage ? (
               <img
