@@ -153,34 +153,27 @@ export default async function HomePage() {
       </section>
 
       {/* OUR WAY OF DOING IT */}
-      <section className="py-20 md:py-28 px-4 md:px-8" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
-        <div className="max-w-[820px] mx-auto text-center">
-          <div className="inline-flex items-center gap-2.5 text-xs font-semibold tracking-[0.2em] mb-16 md:mb-24">
+      <section className="py-20 md:py-28 px-6 md:px-12" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
+        <div className="max-w-[900px] mx-auto">
+          <div className="flex items-center justify-center gap-2.5 text-xs font-semibold tracking-[0.2em] mb-14 md:mb-20">
             <span className="inline-block w-[6px] h-[6px] rounded-full" style={{ background: '#0a0a0a' }} />
             OUR WAY OF DOING IT
           </div>
-
-          <div className="space-y-16 md:space-y-24">
-            {waysWeDoIt.map((item, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 lg:gap-x-20 gap-y-14 md:gap-y-16">
+            {waysWeDoIt.map((item) => (
               <div key={item.title}>
                 <h3
-                  className="text-[32px] md:text-[44px] font-extrabold -tracking-[0.02em] leading-[1.05] mb-6 md:mb-8"
+                  className="text-[28px] md:text-[32px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-5"
                   style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >
                   {item.title}
                 </h3>
                 <p
-                  className="text-[17px] md:text-[20px] leading-[1.7] max-w-[560px] mx-auto"
-                  style={{ color: '#2a2a2a', whiteSpace: 'pre-line' }}
+                  className="text-[15px] leading-[1.65]"
+                  style={{ color: '#3a3a3a', whiteSpace: 'pre-line' }}
                 >
                   {item.desc}
                 </p>
-                {i < waysWeDoIt.length - 1 && (
-                  <div
-                    className="mx-auto mt-16 md:mt-24 w-[1px]"
-                    style={{ height: '40px', background: 'rgba(0,0,0,0.2)' }}
-                  />
-                )}
               </div>
             ))}
           </div>
