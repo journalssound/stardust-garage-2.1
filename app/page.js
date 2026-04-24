@@ -153,21 +153,34 @@ export default async function HomePage() {
       </section>
 
       {/* OUR WAY OF DOING IT */}
-      <section className="py-16 md:py-24 px-4 md:px-12" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
-        <div className="max-w-[1400px] mx-auto">
-          <div className="flex items-center gap-2.5 text-xs font-semibold tracking-[0.16em] mb-10 md:mb-16 md:ml-[80px]">
-            <span className="inline-block w-[7px] h-[7px] rounded-full" style={{ background: '#0a0a0a' }} />
+      <section className="py-20 md:py-28 px-4 md:px-8" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
+        <div className="max-w-[820px] mx-auto text-center">
+          <div className="inline-flex items-center gap-2.5 text-xs font-semibold tracking-[0.2em] mb-16 md:mb-24">
+            <span className="inline-block w-[6px] h-[6px] rounded-full" style={{ background: '#0a0a0a' }} />
             OUR WAY OF DOING IT
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10 md:gap-y-14 md:px-[80px]">
-            {waysWeDoIt.map((item) => (
-              <div key={item.title} className="max-w-[480px]">
-                <h3 className="text-[26px] md:text-[32px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-[14px] md:mb-[18px]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+
+          <div className="space-y-16 md:space-y-24">
+            {waysWeDoIt.map((item, i) => (
+              <div key={item.title}>
+                <h3
+                  className="text-[32px] md:text-[44px] font-extrabold -tracking-[0.02em] leading-[1.05] mb-6 md:mb-8"
+                  style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+                >
                   {item.title}
                 </h3>
-                <p className="text-[15px] leading-[1.6]" style={{ color: '#555', whiteSpace: 'pre-line' }}>
+                <p
+                  className="text-[17px] md:text-[20px] leading-[1.7] max-w-[560px] mx-auto"
+                  style={{ color: '#2a2a2a', whiteSpace: 'pre-line' }}
+                >
                   {item.desc}
                 </p>
+                {i < waysWeDoIt.length - 1 && (
+                  <div
+                    className="mx-auto mt-16 md:mt-24 w-[1px]"
+                    style={{ height: '40px', background: 'rgba(0,0,0,0.2)' }}
+                  />
+                )}
               </div>
             ))}
           </div>
