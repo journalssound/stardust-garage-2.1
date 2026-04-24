@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import SignupForm from './components/SignupForm';
 import EventCard from './components/EventCard';
@@ -19,10 +20,12 @@ async function getSetting(supabase, key) {
 export default async function HomePage() {
   const supabase = await createClient();
 
-  const [heroImage, heroDate, heroTitle, eventsResult] = await Promise.all([
+  const [heroImage, heroDate, heroTitle, coworkCardImage, eventsCardImage, eventsResult] = await Promise.all([
     getSetting(supabase, 'homepage_hero_image'),
     getSetting(supabase, 'homepage_hero_date'),
     getSetting(supabase, 'homepage_hero_title'),
+    getSetting(supabase, 'homepage_card_cowork_image'),
+    getSetting(supabase, 'homepage_card_events_image'),
     supabase.from('events').select('*').order('event_date', { ascending: true }),
   ]);
 
@@ -30,6 +33,7 @@ export default async function HomePage() {
 
   return (
     <>
+      {/* HERO */}
       <div className="px-12 md:px-20 mt-12 mb-16">
         <section
           className="relative mx-auto max-w-[1180px] rounded-[20px] overflow-hidden bg-[#111]"
@@ -56,26 +60,117 @@ export default async function HomePage() {
         </section>
       </div>
 
+      {/* TWO-CARD EXPLORER */}
+      <section className="px-12 md:px-20 mb-24">
+        <div className="max-w-[1180px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Link
+            href="/cowork"
+            className="group relative overflow-hidden rounded-[20px] bg-[#111] transition-transform hover:-translate-y-1"
+            style={{ aspectRatio: '4 / 5' }}
+          >
+            {coworkCardImage ? (
+              <img
+                src={coworkCardImage}
+                alt="Cowork"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                style={{ filter: 'brightness(0.7)' }}
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center" style={{ background: '#1a1a1a' }}>
+                <span className="text-[11px] font-semibold tracking-[0.2em]" style={{ color: '#555' }}>
+                  UPLOAD IMAGE IN ADMIN
+                </span>
+              </div>
+            )}
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 55%, rgba(0,0,0,0) 100%)' }} />
+            <div className="absolute left-8 bottom-8 right-8 text-white">
+              <div className="text-[11px] font-semibold tracking-[0.2em] mb-3 opacity-85">SPACE</div>
+              <div className="text-[44px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                Cowork
+              </div>
+              <div className="mt-4 inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em]">
+                EXPLORE
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </div>
+            </div>
+          </Link>
+
+          <Link
+            href="/events"
+            className="group relative overflow-hidden rounded-[20px] bg-[#111] transition-transform hover:-translate-y-1"
+            style={{ aspectRatio: '4 / 5' }}
+          >
+            {eventsCardImage ? (
+              <img
+                src={eventsCardImage}
+                alt="Events"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                style={{ filter: 'brightness(0.7)' }}
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center" style={{ background: '#1a1a1a' }}>
+                <span className="text-[11px] font-semibold tracking-[0.2em]" style={{ color: '#555' }}>
+                  UPLOAD IMAGE IN ADMIN
+                </span>
+              </div>
+            )}
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 55%, rgba(0,0,0,0) 100%)' }} />
+            <div className="absolute left-8 bottom-8 right-8 text-white">
+              <div className="text-[11px] font-semibold tracking-[0.2em] mb-3 opacity-85">NIGHTLIFE</div>
+              <div className="text-[44px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                Events
+              </div>
+              <div className="mt-4 inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em]">
+                EXPLORE
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      {/* STAY IN THE LOOP */}
       <section className="py-16 px-6" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
         <SignupForm />
       </section>
 
+      {/* UPCOMING EVENTS GRID */}
       <section className="max-w-[1100px] mx-auto px-6 py-24">
-        <h2 className="text-[15px] font-bold tracking-[0.12em] mb-8" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-          UPCOMING EVENTS
-        </h2>
+        <div className="flex items-end justify-between mb-8">
+          <h2 className="text-[15px] font-bold tracking-[0.12em]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            UPCOMING EVENTS
+          </h2>
+          <Link
+            href="/events"
+            className="text-[12px] font-semibold tracking-[0.14em] transition-opacity hover:opacity-70 flex items-center gap-1.5"
+            style={{ color: '#8a8a8a' }}
+          >
+            VIEW ALL
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </Link>
+        </div>
 
         {eventList.length === 0 ? (
           <p style={{ color: '#8a8a8a' }}>No upcoming events right now. Check back soon.</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[22px]">
-            {eventList.map((event) => (
+            {eventList.slice(0, 3).map((event) => (
               <EventCard key={event.id} event={event} />
             ))}
           </div>
         )}
       </section>
 
+      {/* OUR WAY OF DOING IT */}
       <section className="py-24 px-12" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
         <div className="max-w-[1400px] mx-auto">
           <div className="flex items-center gap-2.5 text-xs font-semibold tracking-[0.16em] mb-16" style={{ marginLeft: '80px' }}>
@@ -97,6 +192,7 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* MAP */}
       <section className="max-w-[1100px] mx-auto px-6 py-24">
         <div className="mb-8 text-center">
           <div
@@ -152,6 +248,7 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* CONTACT */}
       <section className="py-24 px-12" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
         <div className="max-w-[1400px] mx-auto px-[80px]">
           <h2

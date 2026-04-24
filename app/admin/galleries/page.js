@@ -4,8 +4,8 @@ import GalleryManager from './GalleryManager';
 
 export const revalidate = 0;
 
-// Define which galleries exist on the site
 const GALLERIES = [
+  { key: 'events_header', label: 'Events Page Header', description: 'Rotating images at the top of the Events page' },
   { key: 'cowork_header', label: 'Cowork Page Header', description: 'Rotating images at the top of the Cowork page' },
 ];
 
@@ -16,7 +16,6 @@ export default async function GalleriesPage() {
     .select('*')
     .order('sort_order', { ascending: true });
 
-  // Group images by gallery_key
   const imagesByGallery = {};
   (allImages || []).forEach((img) => {
     if (!imagesByGallery[img.gallery_key]) imagesByGallery[img.gallery_key] = [];

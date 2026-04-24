@@ -5,7 +5,8 @@ import { usePathname } from 'next/navigation';
 import { useState, useRef, useEffect } from 'react';
 
 const links = [
-  { href: '/', label: 'EVENTS' },
+  { href: '/', label: 'HOME' },
+  { href: '/events', label: 'EVENTS' },
   { href: '/cowork', label: 'COWORK' },
   { href: '/members', label: 'MEMBERS' },
   { href: '/venue-rental', label: 'VENUE RENTAL' },
@@ -26,11 +27,10 @@ export default function NavLinks() {
   const dropdownRef = useRef(null);
 
   const isActive = (href) => {
-    if (href === '/') return pathname === '/' || pathname.startsWith('/events');
+    if (href === '/') return pathname === '/';
     return pathname === href || pathname.startsWith(href + '/');
   };
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -42,7 +42,7 @@ export default function NavLinks() {
   }, []);
 
   return (
-    <ul className="flex gap-11 list-none items-center">
+    <ul className="flex gap-9 list-none items-center">
       {links.map((link) => {
         if (link.dropdown) {
           const isOpen = openDropdown === link.label;
