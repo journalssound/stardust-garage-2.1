@@ -6,19 +6,19 @@ import EventCard from './components/EventCard';
 const waysWeDoIt = [
   {
     title: 'The Frequency of Us',
-    desc: "Creation, connection, and movement — all happening in the same space.\nYou won't find everyone here, and that's by design.",
+    desc: "Creation, connection, and movement — all happening in the same space. You won't find everyone here, and that's by design.",
   },
   {
     title: 'Presence First',
-    desc: "If you're here, be here.\nNo photos. No videos.\n\nThis isn't content.\nIt's a shared moment.",
+    desc: "If you're here, be here. No photos, no videos. This isn't content — it's a shared moment.",
   },
   {
     title: 'State-of-the-Art Sound',
-    desc: "4-point L-Acoustics system, tuned to the space.\nYou don't just hear it — you feel where you are.",
+    desc: "4-point L-Acoustics system, tuned to the space. You don't just hear it — you feel where you are.",
   },
   {
     title: 'The Space',
-    desc: "Intimate by design.\nFeels like your living room — if your living room had a world-class system.",
+    desc: "Intimate by design. Feels like your living room — if your living room had a world-class system.",
   },
 ];
 
@@ -161,7 +161,7 @@ export default async function HomePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 lg:gap-x-20 gap-y-14 md:gap-y-16">
             {waysWeDoIt.map((item) => (
-              <div key={item.title}>
+              <div key={item.title} className="text-center">
                 <h3
                   className="text-[28px] md:text-[32px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-5"
                   style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
@@ -169,8 +169,8 @@ export default async function HomePage() {
                   {item.title}
                 </h3>
                 <p
-                  className="text-[15px] leading-[1.65]"
-                  style={{ color: '#3a3a3a', whiteSpace: 'pre-line' }}
+                  className="text-[15px] leading-[1.65] max-w-[360px] mx-auto"
+                  style={{ color: '#3a3a3a' }}
                 >
                   {item.desc}
                 </p>
