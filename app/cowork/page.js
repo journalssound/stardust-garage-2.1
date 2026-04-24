@@ -6,6 +6,11 @@ export const revalidate = 0;
 
 const features = [
   {
+    title: 'Who This Is For',
+    desc: 'SDG is a sacred and conscious space for creatives committed to depth, intention, and real-world creation.',
+    icon: 'compass',
+  },
+  {
     title: 'Atmosphere',
     desc: 'Reliable, rapid internet. Couches, tables, nooks, and more — all places for you to feel at home while you deep dive into your work.',
     icon: 'wifi',
@@ -16,19 +21,9 @@ const features = [
     icon: 'coffee',
   },
   {
-    title: 'Coworking Only Experiences',
-    desc: 'Bi-weekly Coworking Membership access-only experiences.',
-    icon: 'music',
-  },
-  {
     title: 'Curated Access',
     desc: 'Access is limited and intentional. Members bring guests selectively. We prioritize alignment over volume.',
     icon: 'users',
-  },
-  {
-    title: 'Who This Is For',
-    desc: 'SDG is a sacred and conscious space for creatives committed to depth, intention, and real-world creation.',
-    icon: 'compass',
   },
 ];
 
@@ -105,7 +100,7 @@ export default async function CoworkPage() {
       <RotatingHeader images={images || []} />
 
       {/* Apply-to-be-a-member CTA */}
-      <div className="px-4 md:px-0 mt-6">
+      <div className="px-4 md:px-0 mt-10 mb-14 md:mb-16">
         <div className="max-w-[1100px] mx-auto">
           <Link
             href="/members/apply/cowork"
@@ -148,11 +143,11 @@ export default async function CoworkPage() {
         </div>
       </div>
 
-      <main className="max-w-[1100px] mx-auto px-4 md:px-6 py-14 md:py-20">
-        <h1 className="text-[36px] md:text-[52px] font-extrabold -tracking-[0.02em] mb-[14px] md:mb-[18px] leading-[1.1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+      <main className="max-w-[1100px] mx-auto px-4 md:px-6 pb-14 md:pb-20">
+        <h1 className="text-[36px] md:text-[52px] font-extrabold -tracking-[0.02em] mb-5 md:mb-6 leading-[1.1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
           COWORK SPACE
         </h1>
-        <p className="text-base leading-[1.55] max-w-[680px] mb-10 md:mb-14" style={{ color: '#8a8a8a' }}>
+        <p className="text-[18px] md:text-[20px] leading-[1.6] max-w-[720px] mb-12 md:mb-16" style={{ color: '#b0b0b0' }}>
           For creators, builders, artists, and deep thinkers. SDG is a workspace for people who don&apos;t separate how they live, connect, and express themselves.
         </p>
 
@@ -160,14 +155,14 @@ export default async function CoworkPage() {
           {features.map((f) => (
             <div
               key={f.title}
-              className="rounded-[14px] p-7 md:p-9 border transition-transform hover:-translate-y-1"
+              className="rounded-[14px] p-8 md:p-10 border transition-transform hover:-translate-y-1"
               style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
             >
               <Icon name={f.icon} />
-              <h3 className="text-[19px] font-bold mb-2.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              <h3 className="text-[22px] md:text-[24px] font-bold mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 {f.title}
               </h3>
-              <p className="text-sm leading-[1.55]" style={{ color: '#8a8a8a' }}>
+              <p className="text-[16px] md:text-[17px] leading-[1.6]" style={{ color: '#a0a0a0' }}>
                 {f.desc}
               </p>
             </div>
