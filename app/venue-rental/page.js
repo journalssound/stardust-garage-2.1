@@ -87,7 +87,7 @@ export default function VenueRentalPage() {
         VENUE RENTAL
       </h1>
       <p className="text-base leading-[1.55] max-w-[620px] mb-10 md:mb-14" style={{ color: '#8a8a8a' }}>
-        Host your event, showcase, or private party in one of our unique underground spaces.
+        You&apos;re not just renting a venue — you&apos;re stepping into a culture. If your event fits, we&apos;ll make it happen.
       </p>
 
       <div className="flex flex-col gap-5">

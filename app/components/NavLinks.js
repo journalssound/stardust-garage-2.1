@@ -17,7 +17,6 @@ const links = [
       { href: '/collaborate/artists', label: 'Artists' },
     ],
   },
-  { href: '/about', label: 'ABOUT' },
 ];
 
 export default function NavLinks() {

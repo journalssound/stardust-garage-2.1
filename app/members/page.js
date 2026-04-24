@@ -55,7 +55,7 @@ export default function MembersPage() {
         MEMBERSHIP
       </h1>
       <p className="text-base leading-[1.55] max-w-[620px] mb-10 md:mb-14" style={{ color: '#8a8a8a' }}>
-        Join the Stardust Garage community and become part of the underground music scene. Choose the plan that fits you best.
+        This isn&apos;t open access. It&apos;s shared alignment. Membership is reserved for those who fit the space, respect it, and add to it.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
