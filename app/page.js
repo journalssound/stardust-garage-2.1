@@ -32,9 +32,10 @@ async function getSetting(supabase, key) {
 export default async function HomePage() {
   const supabase = await createClient();
 
-  const [coworkCardImage, eventsCardImage, eventsResult] = await Promise.all([
+  const [coworkCardImage, eventsCardImage, studioCardImage, eventsResult] = await Promise.all([
     getSetting(supabase, 'homepage_card_cowork_image'),
     getSetting(supabase, 'homepage_card_events_image'),
+    getSetting(supabase, 'homepage_card_studio_image'),
     supabase.from('events').select('*').order('event_date', { ascending: true }),
   ]);
 
@@ -42,13 +43,13 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* TWO-CARD EXPLORER */}
+      {/* THREE-CARD EXPLORER */}
       <section className="px-4 md:px-12 lg:px-20 mt-8 md:mt-12 mb-12 md:mb-16">
-        <div className="max-w-[1180px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        <div className="max-w-[1180px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
           <Link
             href="/cowork"
             className="group relative overflow-hidden rounded-[20px] bg-[#111] transition-transform hover:-translate-y-1"
-            style={{ aspectRatio: '16 / 14' }}
+            style={{ aspectRatio: '4 / 5' }}
           >
             {coworkCardImage ? (
               <img
@@ -67,7 +68,7 @@ export default async function HomePage() {
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 55%, rgba(0,0,0,0) 100%)' }} />
             <div className="absolute left-6 md:left-8 bottom-6 md:bottom-8 right-6 md:right-8 text-white">
               <div className="text-[11px] font-semibold tracking-[0.2em] mb-3 opacity-85">SPACE</div>
-              <div className="text-[36px] md:text-[44px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              <div className="text-[36px] md:text-[40px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 Cowork
               </div>
               <div className="mt-4 inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em]">
@@ -83,7 +84,7 @@ export default async function HomePage() {
           <Link
             href="/events"
             className="group relative overflow-hidden rounded-[20px] bg-[#111] transition-transform hover:-translate-y-1"
-            style={{ aspectRatio: '16 / 14' }}
+            style={{ aspectRatio: '4 / 5' }}
           >
             {eventsCardImage ? (
               <img
@@ -102,7 +103,7 @@ export default async function HomePage() {
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 55%, rgba(0,0,0,0) 100%)' }} />
             <div className="absolute left-6 md:left-8 bottom-6 md:bottom-8 right-6 md:right-8 text-white">
               <div className="text-[11px] font-semibold tracking-[0.2em] mb-3 opacity-85">NIGHTLIFE</div>
-              <div className="text-[36px] md:text-[44px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              <div className="text-[36px] md:text-[40px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 Events
               </div>
               <div className="mt-4 inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em]">
@@ -114,6 +115,49 @@ export default async function HomePage() {
               </div>
             </div>
           </Link>
+
+          <div
+            className="relative overflow-hidden rounded-[20px] bg-[#111]"
+            style={{ aspectRatio: '4 / 5' }}
+          >
+            {studioCardImage ? (
+              <img
+                src={studioCardImage}
+                alt="Studio"
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ filter: 'brightness(0.55) saturate(0.85)' }}
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center" style={{ background: '#1a1a1a' }}>
+                <span className="text-[11px] font-semibold tracking-[0.2em]" style={{ color: '#555' }}>
+                  UPLOAD IMAGE IN ADMIN
+                </span>
+              </div>
+            )}
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0) 100%)' }} />
+
+            {/* Coming Soon badge in top-right */}
+            <div
+              className="absolute top-5 right-5 md:top-6 md:right-6 px-3 py-1.5 rounded-full text-[10px] font-semibold tracking-[0.2em] backdrop-blur-md"
+              style={{
+                background: 'rgba(255,255,255,0.12)',
+                border: '1px solid rgba(255,255,255,0.25)',
+                color: '#f5f5f5',
+              }}
+            >
+              COMING SOON
+            </div>
+
+            <div className="absolute left-6 md:left-8 bottom-6 md:bottom-8 right-6 md:right-8 text-white">
+              <div className="text-[11px] font-semibold tracking-[0.2em] mb-3 opacity-85">CREATIVE</div>
+              <div className="text-[36px] md:text-[40px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                Studio
+              </div>
+              <div className="mt-4 inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em] opacity-60">
+                STAY TUNED
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

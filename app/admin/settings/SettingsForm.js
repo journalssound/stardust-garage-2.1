@@ -12,11 +12,13 @@ export default function SettingsForm({ initialSettings }) {
   const [heroTitle, setHeroTitle] = useState(initialSettings.homepage_hero_title || '');
   const [cardCoworkImage, setCardCoworkImage] = useState(initialSettings.homepage_card_cowork_image || '');
   const [cardEventsImage, setCardEventsImage] = useState(initialSettings.homepage_card_events_image || '');
+  const [cardStudioImage, setCardStudioImage] = useState(initialSettings.homepage_card_studio_image || '');
 
   const [uploadingLogo, setUploadingLogo] = useState(false);
   const [uploadingHero, setUploadingHero] = useState(false);
   const [uploadingCowork, setUploadingCowork] = useState(false);
   const [uploadingEvents, setUploadingEvents] = useState(false);
+  const [uploadingStudio, setUploadingStudio] = useState(false);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
@@ -59,6 +61,7 @@ export default function SettingsForm({ initialSettings }) {
       { key: 'homepage_hero_title', value: heroTitle.trim() },
       { key: 'homepage_card_cowork_image', value: cardCoworkImage.trim() },
       { key: 'homepage_card_events_image', value: cardEventsImage.trim() },
+      { key: 'homepage_card_studio_image', value: cardStudioImage.trim() },
     ];
 
     for (const upd of updates) {
@@ -226,10 +229,10 @@ export default function SettingsForm({ initialSettings }) {
           Homepage Cards
         </h2>
         <p className="text-[13px] mb-6" style={{ color: '#8a8a8a' }}>
-          The two large clickable cards below the hero that link to Cowork and Events.
+          The three large cards on the homepage that link to Cowork, Events, and Studio (coming soon).
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
             <h3 className="text-[14px] font-bold mb-4" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
               Cowork Card
@@ -241,6 +244,12 @@ export default function SettingsForm({ initialSettings }) {
               Events Card
             </h3>
             {renderImageUploader('EVENTS CARD IMAGE', cardEventsImage, setCardEventsImage, uploadingEvents, setUploadingEvents, '4 / 5', 'Shown as a vertical card on the homepage.')}
+          </div>
+          <div>
+            <h3 className="text-[14px] font-bold mb-4" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              Studio Card
+            </h3>
+            {renderImageUploader('STUDIO CARD IMAGE', cardStudioImage, setCardStudioImage, uploadingStudio, setUploadingStudio, '4 / 5', 'Shown as a vertical card with "Coming Soon" badge.')}
           </div>
         </div>
       </section>
@@ -258,7 +267,7 @@ export default function SettingsForm({ initialSettings }) {
 
       <button
         type="submit"
-        disabled={saving || uploadingLogo || uploadingHero || uploadingCowork || uploadingEvents}
+        disabled={saving || uploadingLogo || uploadingHero || uploadingCowork || uploadingEvents || uploadingStudio}
         className="w-full py-4 rounded-full text-[12px] font-semibold tracking-[0.16em] transition-all hover:-translate-y-0.5 disabled:opacity-50"
         style={{ background: '#ffffff', color: '#0a0a0a' }}
       >
