@@ -5,7 +5,6 @@ import GalleryManager from './GalleryManager';
 export const revalidate = 0;
 
 const GALLERIES = [
-  { key: 'events_header', label: 'Events Page Header', description: 'Rotating images at the top of the Events page' },
   { key: 'cowork_header', label: 'Cowork Page Header', description: 'Rotating images at the top of the Cowork page' },
 ];
 
