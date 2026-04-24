@@ -73,24 +73,24 @@ export default async function CoworkPage() {
   return (
     <>
       <RotatingHeader images={images || []}>
-        <div className="text-[30px] font-bold -tracking-[0.01em]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+        <div className="text-[24px] md:text-[30px] font-bold -tracking-[0.01em]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
           Cowork
         </div>
       </RotatingHeader>
 
-      <main className="max-w-[1100px] mx-auto px-6 py-20">
-        <h1 className="text-[52px] font-extrabold -tracking-[0.02em] mb-[18px] leading-[1.1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+      <main className="max-w-[1100px] mx-auto px-4 md:px-6 py-14 md:py-20">
+        <h1 className="text-[36px] md:text-[52px] font-extrabold -tracking-[0.02em] mb-[14px] md:mb-[18px] leading-[1.1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
           COWORK SPACE
         </h1>
-        <p className="text-base leading-[1.55] max-w-[620px] mb-14" style={{ color: '#8a8a8a' }}>
+        <p className="text-base leading-[1.55] max-w-[620px] mb-10 md:mb-14" style={{ color: '#8a8a8a' }}>
           A creative workspace for musicians, artists, and remote workers who thrive in an inspiring environment.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
           {features.map((f) => (
             <div
               key={f.title}
-              className="rounded-[14px] p-9 border transition-transform hover:-translate-y-1"
+              className="rounded-[14px] p-7 md:p-9 border transition-transform hover:-translate-y-1"
               style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
             >
               <Icon name={f.icon} />

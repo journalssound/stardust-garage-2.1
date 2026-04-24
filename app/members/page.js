@@ -47,24 +47,24 @@ function CheckIcon({ dark = false }) {
 
 export default function MembersPage() {
   return (
-    <main className="max-w-[1100px] mx-auto px-6 py-20">
+    <main className="max-w-[1100px] mx-auto px-4 md:px-6 py-14 md:py-20">
       <h1
-        className="text-[52px] font-extrabold -tracking-[0.02em] mb-[18px] leading-[1.1]"
+        className="text-[36px] md:text-[52px] font-extrabold -tracking-[0.02em] mb-[14px] md:mb-[18px] leading-[1.1]"
         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
         MEMBERSHIP
       </h1>
-      <p className="text-base leading-[1.55] max-w-[620px] mb-14" style={{ color: '#8a8a8a' }}>
+      <p className="text-base leading-[1.55] max-w-[620px] mb-10 md:mb-14" style={{ color: '#8a8a8a' }}>
         Join the Stardust Garage community and become part of the underground music scene. Choose the plan that fits you best.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
         {plans.map((plan) => {
           const isFeatured = plan.featured;
           return (
             <div
               key={plan.slug}
-              className="relative rounded-[18px] p-10 border flex flex-col"
+              className="relative rounded-[18px] p-8 md:p-10 border flex flex-col"
               style={{
                 background: isFeatured ? '#f5f5f5' : '#141414',
                 borderColor: isFeatured ? '#f5f5f5' : 'rgba(255,255,255,0.05)',
@@ -72,15 +72,15 @@ export default function MembersPage() {
               }}
             >
               <h3
-                className="text-[24px] font-bold -tracking-[0.01em] mb-5"
+                className="text-[22px] md:text-[24px] font-bold -tracking-[0.01em] mb-5"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 {plan.name}
               </h3>
 
-              <div className="flex items-baseline gap-2 mb-9">
+              <div className="flex items-baseline gap-2 mb-7 md:mb-9">
                 <span
-                  className="text-[48px] font-bold -tracking-[0.02em]"
+                  className="text-[40px] md:text-[48px] font-bold -tracking-[0.02em]"
                   style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >
                   {plan.price}
@@ -94,13 +94,13 @@ export default function MembersPage() {
               </div>
 
               <h4
-                className="text-[12px] font-bold tracking-[0.14em] mb-5"
+                className="text-[12px] font-bold tracking-[0.14em] mb-4 md:mb-5"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 INCLUDED
               </h4>
 
-              <ul className="list-none mb-10 flex-1">
+              <ul className="list-none mb-8 md:mb-10 flex-1">
                 {plan.benefits.map((benefit) => (
                   <li
                     key={benefit}
@@ -129,12 +129,12 @@ export default function MembersPage() {
 
       {/* Lockers Add-on */}
       <div
-        className="mt-6 rounded-[18px] p-10 border flex flex-col md:flex-row md:items-center gap-8"
+        className="mt-6 rounded-[18px] p-8 md:p-10 border flex flex-col md:flex-row md:items-center gap-6 md:gap-8"
         style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
       >
         <div className="md:w-[280px] flex-shrink-0">
           <h3
-            className="text-[24px] font-bold -tracking-[0.01em] mb-1.5"
+            className="text-[22px] md:text-[24px] font-bold -tracking-[0.01em] mb-1.5"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
             Lockers

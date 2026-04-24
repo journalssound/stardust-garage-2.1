@@ -31,8 +31,8 @@ export default async function HomePage() {
   return (
     <>
       {/* TWO-CARD EXPLORER */}
-      <section className="px-12 md:px-20 mt-12 mb-16">
-        <div className="max-w-[1180px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section className="px-4 md:px-12 lg:px-20 mt-8 md:mt-12 mb-12 md:mb-16">
+        <div className="max-w-[1180px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           <Link
             href="/cowork"
             className="group relative overflow-hidden rounded-[20px] bg-[#111] transition-transform hover:-translate-y-1"
@@ -53,9 +53,9 @@ export default async function HomePage() {
               </div>
             )}
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 55%, rgba(0,0,0,0) 100%)' }} />
-            <div className="absolute left-8 bottom-8 right-8 text-white">
+            <div className="absolute left-6 md:left-8 bottom-6 md:bottom-8 right-6 md:right-8 text-white">
               <div className="text-[11px] font-semibold tracking-[0.2em] mb-3 opacity-85">SPACE</div>
-              <div className="text-[44px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              <div className="text-[36px] md:text-[44px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 Cowork
               </div>
               <div className="mt-4 inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em]">
@@ -88,9 +88,9 @@ export default async function HomePage() {
               </div>
             )}
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 55%, rgba(0,0,0,0) 100%)' }} />
-            <div className="absolute left-8 bottom-8 right-8 text-white">
+            <div className="absolute left-6 md:left-8 bottom-6 md:bottom-8 right-6 md:right-8 text-white">
               <div className="text-[11px] font-semibold tracking-[0.2em] mb-3 opacity-85">NIGHTLIFE</div>
-              <div className="text-[44px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              <div className="text-[36px] md:text-[44px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 Events
               </div>
               <div className="mt-4 inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em]">
@@ -106,12 +106,12 @@ export default async function HomePage() {
       </section>
 
       {/* STAY IN THE LOOP */}
-      <section className="py-16 px-6" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
+      <section className="py-14 md:py-16 px-4 md:px-6" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
         <SignupForm />
       </section>
 
       {/* UPCOMING EVENTS GRID */}
-      <section className="max-w-[1100px] mx-auto px-6 py-24">
+      <section className="max-w-[1100px] mx-auto px-4 md:px-6 py-16 md:py-24">
         <div className="flex items-end justify-between mb-8">
           <h2 className="text-[15px] font-bold tracking-[0.12em]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             UPCOMING EVENTS
@@ -132,7 +132,7 @@ export default async function HomePage() {
         {eventList.length === 0 ? (
           <p style={{ color: '#8a8a8a' }}>No upcoming events right now. Check back soon.</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-[22px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[22px]">
             {eventList.slice(0, 3).map((event) => (
               <EventCard key={event.id} event={event} />
             ))}
@@ -141,16 +141,16 @@ export default async function HomePage() {
       </section>
 
       {/* OUR WAY OF DOING IT */}
-      <section className="py-24 px-12" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
+      <section className="py-16 md:py-24 px-4 md:px-12" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
         <div className="max-w-[1400px] mx-auto">
-          <div className="flex items-center gap-2.5 text-xs font-semibold tracking-[0.16em] mb-16" style={{ marginLeft: '80px' }}>
+          <div className="flex items-center gap-2.5 text-xs font-semibold tracking-[0.16em] mb-10 md:mb-16 md:ml-[80px]">
             <span className="inline-block w-[7px] h-[7px] rounded-full" style={{ background: '#0a0a0a' }} />
             OUR WAY OF DOING IT
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-14 px-[80px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10 md:gap-y-14 md:px-[80px]">
             {waysWeDoIt.map((item) => (
               <div key={item.title} className="max-w-[480px]">
-                <h3 className="text-[32px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-[18px]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                <h3 className="text-[26px] md:text-[32px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-[14px] md:mb-[18px]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                   {item.title}
                 </h3>
                 <p className="text-[15px] leading-[1.6]" style={{ color: '#555' }}>
@@ -163,7 +163,7 @@ export default async function HomePage() {
       </section>
 
       {/* MAP */}
-      <section className="max-w-[1100px] mx-auto px-6 py-24">
+      <section className="max-w-[1100px] mx-auto px-4 md:px-6 py-16 md:py-24">
         <div className="mb-8 text-center">
           <div
             className="inline-block text-[11px] font-semibold tracking-[0.2em] px-3.5 py-1.5 rounded-full mb-4"
@@ -175,7 +175,7 @@ export default async function HomePage() {
             FIND US
           </div>
           <h2
-            className="text-[32px] md:text-[40px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-3"
+            className="text-[28px] md:text-[40px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-3"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
             St. Elmo Arts District
@@ -189,7 +189,7 @@ export default async function HomePage() {
           className="rounded-[18px] overflow-hidden border"
           style={{
             borderColor: 'rgba(255,255,255,0.08)',
-            aspectRatio: '16 / 7',
+            aspectRatio: '16 / 9',
           }}
         >
           <iframe
@@ -219,16 +219,16 @@ export default async function HomePage() {
       </section>
 
       {/* CONTACT */}
-      <section className="py-24 px-12" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
-        <div className="max-w-[1400px] mx-auto px-[80px]">
+      <section className="py-16 md:py-24 px-4 md:px-12" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
+        <div className="max-w-[1400px] mx-auto md:px-[80px]">
           <h2
-            className="text-[44px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-16"
+            className="text-[36px] md:text-[44px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-10 md:mb-16"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
             Contact
           </h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-12">
             <div>
               <h3 className="text-[20px] font-bold mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 Email
@@ -267,28 +267,14 @@ export default async function HomePage() {
                 Follow Us
               </h3>
               <div className="flex gap-3">
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:-translate-y-0.5"
-                  style={{ background: '#0a0a0a', color: '#ffffff' }}
-                >
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:-translate-y-0.5" style={{ background: '#0a0a0a', color: '#ffffff' }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
                   </svg>
                 </a>
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="YouTube"
-                  className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:-translate-y-0.5"
-                  style={{ background: '#0a0a0a', color: '#ffffff' }}
-                >
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:-translate-y-0.5" style={{ background: '#0a0a0a', color: '#ffffff' }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M23.5 6.5c-.3-1-1-1.8-2-2C19.5 4 12 4 12 4s-7.5 0-9.5.5c-1 .3-1.8 1-2 2C0 8.5 0 12 0 12s0 3.5.5 5.5c.3 1 1 1.8 2 2C4.5 20 12 20 12 20s7.5 0 9.5-.5c1-.3 1.8-1 2-2 .5-2 .5-5.5.5-5.5s0-3.5-.5-5.5zM9.5 15.5v-7l6 3.5-6 3.5z" />
                   </svg>
@@ -298,7 +284,7 @@ export default async function HomePage() {
 
             <div>
               <form className="space-y-5">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <input
                     type="text"
                     placeholder="Your Name"

@@ -28,27 +28,27 @@ export default async function EventPage({ params }) {
   }
 
   return (
-    <main className="max-w-[1100px] mx-auto px-6 py-10">
-      <div className="flex gap-2.5 text-[11px] font-semibold tracking-[0.14em] uppercase mb-7" style={{ color: '#8a8a8a' }}>
+    <main className="max-w-[1100px] mx-auto px-4 md:px-6 py-8 md:py-10">
+      <div className="flex flex-wrap gap-2.5 text-[11px] font-semibold tracking-[0.14em] uppercase mb-6 md:mb-7" style={{ color: '#8a8a8a' }}>
         <Link href="/" className="hover:text-white">HOME</Link>
         <span style={{ color: 'rgba(255,255,255,0.3)' }}>/</span>
-        <Link href="/" className="hover:text-white">EVENTS</Link>
+        <Link href="/events" className="hover:text-white">EVENTS</Link>
         <span style={{ color: 'rgba(255,255,255,0.3)' }}>/</span>
         <span style={{ color: '#f5f5f5' }}>{event.title.toUpperCase()}</span>
       </div>
 
-      <div className="w-full rounded-[14px] overflow-hidden mb-12 bg-[#111]" style={{ aspectRatio: '16 / 7' }}>
+      <div className="w-full rounded-[14px] overflow-hidden mb-10 md:mb-12 bg-[#111] aspect-[16/10] md:aspect-[16/7]">
         {event.image_url && (
           <img src={event.image_url} alt={event.title} className="w-full h-full object-cover" />
         )}
       </div>
 
-      <div className="grid gap-16" style={{ gridTemplateColumns: '300px 1fr' }}>
+      <div className="grid gap-10 md:gap-16 md:grid-cols-[300px_1fr]">
         <aside>
-          <h2 className="text-[32px] font-extrabold -tracking-[0.02em] mb-1.5 leading-[1.1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          <h2 className="text-[28px] md:text-[32px] font-extrabold -tracking-[0.02em] mb-1.5 leading-[1.1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             {event.title}
           </h2>
-          <div className="text-[22px] font-bold -tracking-[0.01em] mb-5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          <div className="text-[20px] md:text-[22px] font-bold -tracking-[0.01em] mb-5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             {formatEventDate(event.event_date)}
           </div>
 
@@ -90,7 +90,7 @@ export default async function EventPage({ params }) {
         </aside>
 
         <section>
-          <h1 className="text-[40px] font-extrabold -tracking-[0.02em] mb-7 leading-[1.1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          <h1 className="text-[32px] md:text-[40px] font-extrabold -tracking-[0.02em] mb-6 md:mb-7 leading-[1.1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             {event.title}
           </h1>
 
