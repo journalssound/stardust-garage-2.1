@@ -67,16 +67,8 @@ export default async function HomePage() {
             )}
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 55%, rgba(0,0,0,0) 100%)' }} />
             <div className="absolute left-6 md:left-8 bottom-6 md:bottom-8 right-6 md:right-8 text-white">
-              <div className="text-[11px] font-semibold tracking-[0.2em] mb-3 opacity-85">SPACE</div>
               <div className="text-[36px] md:text-[44px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 Cowork
-              </div>
-              <div className="mt-4 inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em]">
-                EXPLORE
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
               </div>
             </div>
           </Link>
@@ -102,16 +94,8 @@ export default async function HomePage() {
             )}
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 55%, rgba(0,0,0,0) 100%)' }} />
             <div className="absolute left-6 md:left-8 bottom-6 md:bottom-8 right-6 md:right-8 text-white">
-              <div className="text-[11px] font-semibold tracking-[0.2em] mb-3 opacity-85">NIGHTLIFE</div>
               <div className="text-[36px] md:text-[44px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 Events
-              </div>
-              <div className="mt-4 inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em]">
-                EXPLORE
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
               </div>
             </div>
           </Link>
