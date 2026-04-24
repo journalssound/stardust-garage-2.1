@@ -4,10 +4,22 @@ import SignupForm from './components/SignupForm';
 import EventCard from './components/EventCard';
 
 const waysWeDoIt = [
-  { title: 'Work hard, play hard', desc: "M–F we offer the cowork experience that Creators and Builders like yourself have been craving. After working hours and weekends, we offer dance music experiences like you won't find anywhere in Austin." },
-  { title: 'Presence First', desc: 'Our policy is "being where your feet are". We do not allow photography/videography on premises. This is born out of a philosophy of magnetism and human-connection.' },
-  { title: 'State-of-the-Art Sound', desc: '4-point L-Acoustics Sound System. We hear many times on the dance floor "wtf this is the best sound I\'ve ever heard".' },
-  { title: 'Legendary Atmosphere', desc: 'Quite possibly the coziest venue on planet earth. "It feels like I\'m in my living room."' },
+  {
+    title: 'The Frequency of Us',
+    desc: "Creation, connection, and movement — all happening in the same space.\nYou won't find everyone here, and that's by design.",
+  },
+  {
+    title: 'Presence First',
+    desc: "If you're here, be here.\nNo photos. No videos.\n\nThis isn't content.\nIt's a shared moment.",
+  },
+  {
+    title: 'State-of-the-Art Sound',
+    desc: "4-point L-Acoustics system, tuned to the space.\nYou don't just hear it — you feel where you are.",
+  },
+  {
+    title: 'The Space',
+    desc: "Intimate by design.\nFeels like your living room — if your living room had a world-class system.",
+  },
 ];
 
 export const revalidate = 0;
@@ -153,7 +165,7 @@ export default async function HomePage() {
                 <h3 className="text-[26px] md:text-[32px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-[14px] md:mb-[18px]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                   {item.title}
                 </h3>
-                <p className="text-[15px] leading-[1.6]" style={{ color: '#555' }}>
+                <p className="text-[15px] leading-[1.6]" style={{ color: '#555', whiteSpace: 'pre-line' }}>
                   {item.desc}
                 </p>
               </div>
@@ -193,7 +205,7 @@ export default async function HomePage() {
           }}
         >
           <iframe
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-97.8270%2C30.2110%2C-97.8070%2C30.2310&layer=mapnik&marker=30.2210%2C-97.8170"
+            src="https://www.google.com/maps?q=4319+Terry-O+Ln,+Austin,+TX+78745&output=embed"
             style={{ width: '100%', height: '100%', border: 0, filter: 'invert(0.9) hue-rotate(180deg) saturate(0.3)' }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
