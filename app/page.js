@@ -118,48 +118,46 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* WIDE STUDIO COMING SOON CARD */}
+      {/* STUDIO COMING SOON BAR */}
       <section className="px-4 md:px-12 lg:px-20 mb-12 md:mb-16">
         <div className="max-w-[1180px] mx-auto">
           <div
-            className="relative w-full overflow-hidden rounded-[20px] bg-[#111]"
-            style={{ aspectRatio: '16 / 5' }}
+            className="relative w-full overflow-hidden rounded-[18px] border"
+            style={{
+              background: '#141414',
+              borderColor: 'rgba(255,255,255,0.08)',
+            }}
           >
-            {studioCardImage ? (
+            {studioCardImage && (
               <img
                 src={studioCardImage}
-                alt="Studio"
+                alt=""
                 className="absolute inset-0 w-full h-full object-cover"
-                style={{ filter: 'brightness(0.5) saturate(0.85)' }}
+                style={{ filter: 'brightness(0.45) saturate(0.85)' }}
               />
-            ) : (
-              <div className="absolute inset-0 flex items-center justify-center" style={{ background: '#1a1a1a' }}>
-                <span className="text-[11px] font-semibold tracking-[0.2em]" style={{ color: '#555' }}>
-                  UPLOAD STUDIO IMAGE IN ADMIN
-                </span>
-              </div>
             )}
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.2) 100%)' }} />
-
-            {/* Coming Soon badge in top-right */}
-            <div
-              className="absolute top-5 right-5 md:top-7 md:right-7 px-3 py-1.5 rounded-full text-[10px] font-semibold tracking-[0.2em] backdrop-blur-md"
-              style={{
-                background: 'rgba(255,255,255,0.12)',
-                border: '1px solid rgba(255,255,255,0.25)',
-                color: '#f5f5f5',
-              }}
-            >
-              COMING SOON
-            </div>
-
-            <div className="absolute left-6 md:left-10 top-1/2 -translate-y-1/2 right-6 md:right-10 text-white">
-              <div className="text-[11px] font-semibold tracking-[0.2em] mb-2 md:mb-3 opacity-85">CREATIVE</div>
-              <div className="text-[36px] md:text-[52px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            {studioCardImage && (
+              <div
+                className="absolute inset-0"
+                style={{ background: 'linear-gradient(to right, rgba(20,20,20,0.95) 0%, rgba(20,20,20,0.6) 60%, rgba(20,20,20,0.4) 100%)' }}
+              />
+            )}
+            <div className="relative flex items-center justify-between px-7 md:px-10 py-5 md:py-6">
+              <div
+                className="text-[22px] md:text-[26px] font-extrabold -tracking-[0.02em] leading-[1.1]"
+                style={{ color: '#f5f5f5', fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+              >
                 Studio
               </div>
-              <div className="mt-3 md:mt-4 text-[14px] md:text-[15px] opacity-70 max-w-[480px]">
-                A creative production space for the Stardust community. Stay tuned.
+              <div
+                className="px-3 py-1.5 rounded-full text-[10px] font-semibold tracking-[0.2em] backdrop-blur-md flex-shrink-0"
+                style={{
+                  background: 'rgba(255,255,255,0.08)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  color: '#f5f5f5',
+                }}
+              >
+                COMING SOON
               </div>
             </div>
           </div>
