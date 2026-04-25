@@ -28,7 +28,7 @@ export default function SplashClient({ logoUrl }) {
   };
 
   return (
-    <main className="relative min-h-screen flex flex-col items-center justify-center px-6 py-16">
+    <main className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-12 md:pt-20 pb-16">
       <audio
         ref={audioRef}
         loop
@@ -36,67 +36,69 @@ export default function SplashClient({ logoUrl }) {
         src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sdg-bg-track-nmh3bc3xxpb3RhJXNTPJfyOFzXEBFq.mp3"
       />
 
-      {/* WORDMARK */}
-      <div className="flex flex-col items-center mb-12 md:mb-14">
-        <h1
-          className="text-[64px] md:text-[110px] leading-[0.9] tracking-[0.02em] text-white text-center"
+      <div className="flex flex-col items-center -mt-12 md:-mt-20">
+        {/* WORDMARK */}
+        <div className="flex flex-col items-center mb-8 md:mb-10">
+          <h1
+            className="text-[64px] md:text-[110px] leading-[0.9] tracking-[0.02em] text-white text-center"
+            style={{
+              fontFamily: "'Cormorant Unicase', 'Cormorant Garamond', serif",
+              fontWeight: 500,
+            }}
+          >
+            STARDUST
+          </h1>
+          <div
+            className="text-[28px] md:text-[44px] tracking-[0.32em] text-white mt-1 md:mt-2"
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 400,
+            }}
+          >
+            GARAGE
+          </div>
+        </div>
+
+        {/* FLOATING LOGO */}
+        <Link
+          href="/home"
+          aria-label="Enter Stardust Garage"
+          className="block mb-7 md:mb-8 transition-transform hover:scale-105"
           style={{
-            fontFamily: "'Cormorant Unicase', 'Cormorant Garamond', serif",
-            fontWeight: 500,
+            animation: mounted ? 'float-logo 4s ease-in-out infinite' : 'none',
           }}
         >
-          STARDUST
-        </h1>
-        <div
-          className="text-[28px] md:text-[44px] tracking-[0.32em] text-white mt-1 md:mt-2"
+          {logoUrl ? (
+            <img
+              src={logoUrl}
+              alt="Stardust Garage"
+              className="w-[120px] md:w-[150px] h-auto"
+              style={{
+                filter: 'drop-shadow(0 0 30px rgba(255,255,255,0.15))',
+              }}
+            />
+          ) : (
+            <div
+              className="w-[120px] md:w-[150px] h-[150px] md:h-[190px] rounded-[14px] flex items-center justify-center text-center px-4"
+              style={{ background: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)' }}
+            >
+              <span className="text-[10px] tracking-[0.2em] text-white/40">UPLOAD SPLASH LOGO IN ADMIN</span>
+            </div>
+          )}
+        </Link>
+
+        {/* ENTER THE PORTAL */}
+        <Link
+          href="/home"
+          className="text-[16px] md:text-[18px] italic text-white/85 hover:text-white transition-colors tracking-wide"
           style={{
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Cormorant Garamond', serif",
             fontWeight: 400,
           }}
         >
-          GARAGE
-        </div>
+          enter the portal
+        </Link>
       </div>
-
-      {/* FLOATING LOGO */}
-      <Link
-        href="/home"
-        aria-label="Enter Stardust Garage"
-        className="block mb-10 md:mb-12 transition-transform hover:scale-105"
-        style={{
-          animation: mounted ? 'float-logo 4s ease-in-out infinite' : 'none',
-        }}
-      >
-        {logoUrl ? (
-          <img
-            src={logoUrl}
-            alt="Stardust Garage"
-            className="w-[140px] md:w-[180px] h-auto"
-            style={{
-              filter: 'drop-shadow(0 0 30px rgba(255,255,255,0.15))',
-            }}
-          />
-        ) : (
-          <div
-            className="w-[140px] md:w-[180px] h-[180px] md:h-[230px] rounded-[14px] flex items-center justify-center text-center px-4"
-            style={{ background: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)' }}
-          >
-            <span className="text-[10px] tracking-[0.2em] text-white/40">UPLOAD SPLASH LOGO IN ADMIN</span>
-          </div>
-        )}
-      </Link>
-
-      {/* ENTER THE PORTAL */}
-      <Link
-        href="/home"
-        className="text-[16px] md:text-[18px] italic text-white/85 hover:text-white transition-colors tracking-wide"
-        style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontWeight: 400,
-        }}
-      >
-        enter the portal
-      </Link>
 
       {/* SOUND TOGGLE */}
       <button
