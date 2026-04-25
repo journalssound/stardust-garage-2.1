@@ -42,8 +42,8 @@ export default function SplashClient({ logoUrl }) {
           <h1
             className="text-[64px] md:text-[110px] leading-[0.9] tracking-[0.02em] text-white text-center"
             style={{
-              fontFamily: "'Cormorant Unicase', 'Cormorant Garamond', serif",
-              fontWeight: 500,
+              fontFamily: "'Moshra Aesthetic', 'Cormorant Unicase', serif",
+              fontWeight: 400,
             }}
           >
             STARDUST

@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Moshra Aesthetic';
+  src: url('/fonts/MoshraAesthetic-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg-dark: #0a0a0a;
   --bg-card: #141414;
