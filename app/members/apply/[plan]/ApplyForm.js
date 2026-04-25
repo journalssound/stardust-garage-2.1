@@ -83,7 +83,7 @@ export default function ApplyForm({ planSlug, planName, planPrice }) {
         </div>
         <h1
           className="text-[32px] md:text-[40px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-4"
-          style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           Application received
         </h1>
@@ -134,7 +134,7 @@ export default function ApplyForm({ planSlug, planName, planPrice }) {
         </div>
         <h1
           className="text-[36px] md:text-[52px] font-extrabold -tracking-[0.02em] leading-[1.05] mb-4"
-          style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           Membership
         </h1>

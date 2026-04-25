@@ -54,7 +54,7 @@ export default function SignupForm() {
         </div>
         <h3
           className="text-[26px] font-bold mb-3 -tracking-[0.01em]"
-          style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           You&apos;re on the list
         </h3>
@@ -78,7 +78,7 @@ export default function SignupForm() {
       </div>
       <h2
         className="text-[32px] md:text-[40px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-4"
-        style={{ fontFamily: "'Cormorant Garamond', serif" }}
+        style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
         Never miss a drop.
       </h2>

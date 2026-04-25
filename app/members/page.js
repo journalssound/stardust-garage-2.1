@@ -50,7 +50,7 @@ export default function MembersPage() {
     <main className="max-w-[1100px] mx-auto px-4 md:px-6 py-14 md:py-20">
       <h1
         className="text-[36px] md:text-[52px] font-extrabold -tracking-[0.02em] mb-[14px] md:mb-[18px] leading-[1.1]"
-        style={{ fontFamily: "'Cormorant Garamond', serif" }}
+        style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
         MEMBERSHIP
       </h1>
@@ -73,7 +73,7 @@ export default function MembersPage() {
             >
               <h3
                 className="text-[22px] md:text-[24px] font-bold -tracking-[0.01em] mb-5"
-                style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 {plan.name}
               </h3>
@@ -81,7 +81,7 @@ export default function MembersPage() {
               <div className="flex items-baseline gap-2 mb-7 md:mb-9">
                 <span
                   className="text-[40px] md:text-[48px] font-bold -tracking-[0.02em]"
-                  style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                  style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >
                   {plan.price}
                 </span>
@@ -95,7 +95,7 @@ export default function MembersPage() {
 
               <h4
                 className="text-[12px] font-bold tracking-[0.14em] mb-4 md:mb-5"
-                style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 INCLUDED
               </h4>
@@ -135,7 +135,7 @@ export default function MembersPage() {
         <div className="md:w-[280px] flex-shrink-0">
           <h3
             className="text-[22px] md:text-[24px] font-bold -tracking-[0.01em] mb-1.5"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
             Lockers
           </h3>

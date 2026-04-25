@@ -144,7 +144,7 @@ export default async function CoworkPage() {
       </div>
 
       <main className="max-w-[1100px] mx-auto px-4 md:px-6 pb-14 md:pb-20">
-        <h1 className="text-[36px] md:text-[52px] font-extrabold -tracking-[0.02em] mb-5 md:mb-6 leading-[1.1]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+        <h1 className="text-[36px] md:text-[52px] font-extrabold -tracking-[0.02em] mb-5 md:mb-6 leading-[1.1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
           COWORK SPACE
         </h1>
         <p className="text-[18px] md:text-[20px] leading-[1.6] max-w-[720px] mb-12 md:mb-16" style={{ color: '#b0b0b0' }}>
@@ -159,7 +159,7 @@ export default async function CoworkPage() {
               style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
             >
               <Icon name={f.icon} />
-              <h3 className="text-[22px] md:text-[24px] font-bold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h3 className="text-[22px] md:text-[24px] font-bold mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 {f.title}
               </h3>
               <p className="text-[16px] md:text-[17px] leading-[1.6]" style={{ color: '#a0a0a0' }}>

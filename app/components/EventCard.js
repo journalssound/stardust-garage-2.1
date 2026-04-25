@@ -23,7 +23,7 @@ export default function EventCard({ event }) {
         <div className="text-xs mt-4 mb-2" style={{ color: '#8a8a8a' }}>
           {formatEventDate(event.event_date)}
         </div>
-        <h3 className="text-[17px] font-bold" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+        <h3 className="text-[17px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
           {event.title}
         </h3>
       </Link>

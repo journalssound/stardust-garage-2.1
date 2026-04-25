@@ -67,7 +67,7 @@ export default async function HomePage() {
             )}
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 55%, rgba(0,0,0,0) 100%)' }} />
             <div className="absolute left-6 md:left-8 bottom-6 md:bottom-8 right-6 md:right-8 text-white">
-              <div className="text-[36px] md:text-[44px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <div className="text-[36px] md:text-[44px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 Cowork
               </div>
             </div>
@@ -94,7 +94,7 @@ export default async function HomePage() {
             )}
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 55%, rgba(0,0,0,0) 100%)' }} />
             <div className="absolute left-6 md:left-8 bottom-6 md:bottom-8 right-6 md:right-8 text-white">
-              <div className="text-[36px] md:text-[44px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <div className="text-[36px] md:text-[44px] font-extrabold -tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 Events
               </div>
             </div>
@@ -129,7 +129,7 @@ export default async function HomePage() {
             <div className="relative flex items-center justify-between px-7 md:px-10 py-5 md:py-6">
               <div
                 className="text-[22px] md:text-[26px] font-extrabold -tracking-[0.02em] leading-[1.1]"
-                style={{ color: '#f5f5f5', fontFamily: "'Cormorant Garamond', serif" }}
+                style={{ color: '#f5f5f5', fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 Studio
               </div>
@@ -156,7 +156,7 @@ export default async function HomePage() {
       {/* UPCOMING EVENTS GRID */}
       <section className="max-w-[1100px] mx-auto px-4 md:px-6 py-16 md:py-24">
         <div className="flex items-end justify-between mb-8">
-          <h2 className="text-[15px] font-bold tracking-[0.12em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <h2 className="text-[15px] font-bold tracking-[0.12em]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             UPCOMING EVENTS
           </h2>
           <Link
@@ -195,7 +195,7 @@ export default async function HomePage() {
               <div key={item.title} className="text-center">
                 <h3
                   className="text-[28px] md:text-[32px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-5"
-                  style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                  style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >
                   {item.title}
                 </h3>
@@ -225,7 +225,7 @@ export default async function HomePage() {
           </div>
           <h2
             className="text-[28px] md:text-[40px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-3"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
             St. Elmo Arts District
           </h2>
@@ -272,21 +272,21 @@ export default async function HomePage() {
         <div className="max-w-[1400px] mx-auto md:px-[80px]">
           <h2
             className="text-[36px] md:text-[44px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-10 md:mb-16"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
             Contact
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-12">
             <div>
-              <h3 className="text-[20px] font-bold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h3 className="text-[20px] font-bold mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 Email
               </h3>
               <a href="mailto:hello@sdgatx.com" className="text-[15px] hover:underline" style={{ color: '#333' }}>
                 hello@sdgatx.com
               </a>
 
-              <h3 className="text-[20px] font-bold mt-8 mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h3 className="text-[20px] font-bold mt-8 mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 WhatsApp
               </h3>
               <a href="https://wa.me/17373086685" target="_blank" rel="noopener noreferrer" className="text-[15px] hover:underline" style={{ color: '#333' }}>
@@ -295,7 +295,7 @@ export default async function HomePage() {
             </div>
 
             <div>
-              <h3 className="text-[20px] font-bold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h3 className="text-[20px] font-bold mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 Address
               </h3>
               <p className="text-[15px]" style={{ color: '#333' }}>
@@ -303,7 +303,7 @@ export default async function HomePage() {
                 Austin, TX 78745
               </p>
 
-              <h3 className="text-[20px] font-bold mt-8 mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h3 className="text-[20px] font-bold mt-8 mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 Opening Hours
               </h3>
               <div className="text-[15px] space-y-1.5" style={{ color: '#333' }}>
@@ -312,7 +312,7 @@ export default async function HomePage() {
                 <p>Sun: Open for Events (check schedule)</p>
               </div>
 
-              <h3 className="text-[20px] font-bold mt-8 mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h3 className="text-[20px] font-bold mt-8 mb-4" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 Follow Us
               </h3>
               <div className="flex gap-3">
