@@ -13,12 +13,14 @@ export default function SettingsForm({ initialSettings }) {
   const [cardCoworkImage, setCardCoworkImage] = useState(initialSettings.homepage_card_cowork_image || '');
   const [cardEventsImage, setCardEventsImage] = useState(initialSettings.homepage_card_events_image || '');
   const [cardStudioImage, setCardStudioImage] = useState(initialSettings.homepage_card_studio_image || '');
+  const [splashLogoImage, setSplashLogoImage] = useState(initialSettings.splash_logo_image || '');
 
   const [uploadingLogo, setUploadingLogo] = useState(false);
   const [uploadingHero, setUploadingHero] = useState(false);
   const [uploadingCowork, setUploadingCowork] = useState(false);
   const [uploadingEvents, setUploadingEvents] = useState(false);
   const [uploadingStudio, setUploadingStudio] = useState(false);
+  const [uploadingSplashLogo, setUploadingSplashLogo] = useState(false);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
@@ -62,6 +64,7 @@ export default function SettingsForm({ initialSettings }) {
       { key: 'homepage_card_cowork_image', value: cardCoworkImage.trim() },
       { key: 'homepage_card_events_image', value: cardEventsImage.trim() },
       { key: 'homepage_card_studio_image', value: cardStudioImage.trim() },
+      { key: 'splash_logo_image', value: splashLogoImage.trim() },
     ];
 
     for (const upd of updates) {
@@ -254,6 +257,23 @@ export default function SettingsForm({ initialSettings }) {
         </div>
       </section>
 
+      {/* SPLASH PAGE */}
+      <section
+        className="rounded-[14px] p-8 border"
+        style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
+      >
+        <h2 className="text-[18px] font-bold mb-2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          Splash Page
+        </h2>
+        <p className="text-[13px] mb-6" style={{ color: '#8a8a8a' }}>
+          The floating logo image shown on the splash entry page (the first thing visitors see).
+        </p>
+
+        <div className="max-w-[280px]">
+          {renderImageUploader('SPLASH LOGO', splashLogoImage, setSplashLogoImage, uploadingSplashLogo, setUploadingSplashLogo, '1 / 1', 'Recommended: transparent PNG. Centered on the splash page above "enter the portal".')}
+        </div>
+      </section>
+
       {error && (
         <div className="text-[13px] text-red-400 p-3 rounded-[10px] border border-red-500/30 bg-red-500/10">
           {error}
@@ -267,7 +287,7 @@ export default function SettingsForm({ initialSettings }) {
 
       <button
         type="submit"
-        disabled={saving || uploadingLogo || uploadingHero || uploadingCowork || uploadingEvents || uploadingStudio}
+        disabled={saving || uploadingLogo || uploadingHero || uploadingCowork || uploadingEvents || uploadingStudio || uploadingSplashLogo}
         className="w-full py-4 rounded-full text-[12px] font-semibold tracking-[0.16em] transition-all hover:-translate-y-0.5 disabled:opacity-50"
         style={{ background: '#ffffff', color: '#0a0a0a' }}
       >
