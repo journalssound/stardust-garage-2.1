@@ -83,7 +83,7 @@ function VenueIcon({ name }) {
 export default function VenueRentalPage() {
   return (
     <main className="max-w-[1000px] mx-auto px-4 md:px-6 py-14 md:py-20">
-      <h1 className="text-[36px] md:text-[52px] font-extrabold -tracking-[0.02em] mb-[14px] md:mb-[18px] leading-[1.1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+      <h1 className="text-[36px] md:text-[52px] font-extrabold -tracking-[0.02em] mb-[14px] md:mb-[18px] leading-[1.1]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
         VENUE RENTAL
       </h1>
       <p className="text-base leading-[1.55] max-w-[620px] mb-10 md:mb-14" style={{ color: '#8a8a8a' }}>
@@ -100,7 +100,7 @@ export default function VenueRentalPage() {
             <div className="flex-1">
               <div className="flex items-start gap-4 mb-[18px] md:mb-[22px]">
                 <VenueIcon name={venue.icon} />
-                <div className="text-[20px] md:text-[22px] font-bold -tracking-[0.01em]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                <div className="text-[20px] md:text-[22px] font-bold -tracking-[0.01em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   {venue.name}
                 </div>
               </div>
@@ -138,12 +138,12 @@ export default function VenueRentalPage() {
         className="rounded-[18px] p-8 md:p-12 mt-12 md:mt-14 mb-12 md:mb-14 border"
         style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
       >
-        <h2 className="text-[16px] md:text-[18px] font-bold tracking-[0.14em] mb-6 md:mb-8" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+        <h2 className="text-[16px] md:text-[18px] font-bold tracking-[0.14em] mb-6 md:mb-8" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
           WHAT&apos;S INCLUDED
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           <div>
-            <h3 className="text-base font-bold mb-[14px] md:mb-[18px]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            <h3 className="text-base font-bold mb-[14px] md:mb-[18px]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               Equipment &amp; Staff
             </h3>
             <ul className="list-none text-sm leading-[2]" style={{ color: '#8a8a8a' }}>
@@ -155,7 +155,7 @@ export default function VenueRentalPage() {
             </ul>
           </div>
           <div>
-            <h3 className="text-base font-bold mb-[14px] md:mb-[18px]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            <h3 className="text-base font-bold mb-[14px] md:mb-[18px]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               Venue Services
             </h3>
             <ul className="list-none text-sm leading-[2]" style={{ color: '#8a8a8a' }}>

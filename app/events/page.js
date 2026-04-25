@@ -40,7 +40,7 @@ export default async function EventsPage() {
     <main className="max-w-[900px] mx-auto px-4 md:px-6 py-12 md:py-16">
       <h1
         className="text-[36px] md:text-[52px] font-extrabold -tracking-[0.02em] mb-3 leading-[1.1]"
-        style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+        style={{ fontFamily: "'Cormorant Garamond', serif" }}
       >
         Upcoming Events
       </h1>
@@ -76,7 +76,7 @@ export default async function EventsPage() {
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="text-center">
                           <div className="text-[11px] font-semibold tracking-[0.16em] mb-1" style={{ color: '#666' }}>{month}</div>
-                          <div className="text-[40px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>{day}</div>
+                          <div className="text-[40px] font-bold" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{day}</div>
                         </div>
                       </div>
                     )}
@@ -89,7 +89,7 @@ export default async function EventsPage() {
                         {event.event_time && <span> · {event.event_time}</span>}
                       </div>
                       <Link href={`/events/${event.slug}`}>
-                        <h3 className="text-[22px] md:text-[28px] font-bold -tracking-[0.01em] mb-3 leading-[1.1] hover:opacity-80 transition-opacity" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                        <h3 className="text-[22px] md:text-[28px] font-bold -tracking-[0.01em] mb-3 leading-[1.1] hover:opacity-80 transition-opacity" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                           {event.title}
                         </h3>
                       </Link>
@@ -136,7 +136,7 @@ export default async function EventsPage() {
         <div className="mt-16 md:mt-24">
           <h2
             className="text-[24px] md:text-[28px] font-extrabold -tracking-[0.02em] mb-6 md:mb-8 leading-[1.1]"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             Past Events
           </h2>
@@ -156,7 +156,7 @@ export default async function EventsPage() {
                     <div className="text-[11px] md:text-[12px] mb-1" style={{ color: '#8a8a8a' }}>
                       {formatEventDate(event.event_date)}
                     </div>
-                    <h3 className="text-[15px] md:text-[16px] font-bold truncate" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                    <h3 className="text-[15px] md:text-[16px] font-bold truncate" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                       {event.title}
                     </h3>
                   </div>

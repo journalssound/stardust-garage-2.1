@@ -45,10 +45,10 @@ export default async function EventPage({ params }) {
 
       <div className="grid gap-10 md:gap-16 md:grid-cols-[300px_1fr]">
         <aside>
-          <h2 className="text-[28px] md:text-[32px] font-extrabold -tracking-[0.02em] mb-1.5 leading-[1.1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          <h2 className="text-[28px] md:text-[32px] font-extrabold -tracking-[0.02em] mb-1.5 leading-[1.1]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             {event.title}
           </h2>
-          <div className="text-[20px] md:text-[22px] font-bold -tracking-[0.01em] mb-5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          <div className="text-[20px] md:text-[22px] font-bold -tracking-[0.01em] mb-5" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             {formatEventDate(event.event_date)}
           </div>
 
@@ -72,7 +72,7 @@ export default async function EventPage({ params }) {
 
           {event.event_time && (
             <div className="py-5 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-              <div className="text-[13px] font-bold mb-2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Time</div>
+              <div className="text-[13px] font-bold mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Time</div>
               <div className="text-sm leading-[1.6]" style={{ color: '#8a8a8a' }}>
                 {event.event_time}
               </div>
@@ -80,7 +80,7 @@ export default async function EventPage({ params }) {
           )}
 
           <div className="py-5 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-            <div className="text-[13px] font-bold mb-2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Venue</div>
+            <div className="text-[13px] font-bold mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Venue</div>
             <div className="text-sm leading-[1.6]" style={{ color: '#8a8a8a' }}>
               Stardust Garage<br />
               St. Elmo Arts District<br />
@@ -90,7 +90,7 @@ export default async function EventPage({ params }) {
         </aside>
 
         <section>
-          <h1 className="text-[32px] md:text-[40px] font-extrabold -tracking-[0.02em] mb-6 md:mb-7 leading-[1.1]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          <h1 className="text-[32px] md:text-[40px] font-extrabold -tracking-[0.02em] mb-6 md:mb-7 leading-[1.1]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             {event.title}
           </h1>
 

@@ -74,7 +74,7 @@ export default function CollaborateForm({ role, roleLabel, roleSubtitle }) {
         </div>
         <h1
           className="text-[32px] md:text-[40px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-4"
-          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+          style={{ fontFamily: "'Cormorant Garamond', serif" }}
         >
           Submission received
         </h1>
@@ -125,7 +125,7 @@ export default function CollaborateForm({ role, roleLabel, roleSubtitle }) {
         </div>
         <h1
           className="text-[36px] md:text-[52px] font-extrabold -tracking-[0.02em] leading-[1.05] mb-4"
-          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+          style={{ fontFamily: "'Cormorant Garamond', serif" }}
         >
           Collaborate
         </h1>
@@ -146,7 +146,7 @@ export default function CollaborateForm({ role, roleLabel, roleSubtitle }) {
           className="rounded-[14px] p-6 md:p-8 border"
           style={{ background: '#0f0f0f', borderColor: 'rgba(255,255,255,0.05)' }}
         >
-          <h2 className="text-[11px] font-semibold tracking-[0.16em] mb-6" style={{ color: '#8a8a8a', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          <h2 className="text-[11px] font-semibold tracking-[0.16em] mb-6" style={{ color: '#8a8a8a', fontFamily: "'Cormorant Garamond', serif" }}>
             CONTACT INFO
           </h2>
 
@@ -223,7 +223,7 @@ export default function CollaborateForm({ role, roleLabel, roleSubtitle }) {
           className="rounded-[14px] p-6 md:p-8 border"
           style={{ background: '#0f0f0f', borderColor: 'rgba(255,255,255,0.05)' }}
         >
-          <h2 className="text-[11px] font-semibold tracking-[0.16em] mb-6" style={{ color: '#8a8a8a', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          <h2 className="text-[11px] font-semibold tracking-[0.16em] mb-6" style={{ color: '#8a8a8a', fontFamily: "'Cormorant Garamond', serif" }}>
             ABOUT YOU
           </h2>
 
