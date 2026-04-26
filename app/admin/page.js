@@ -58,6 +58,14 @@ export default async function AdminDashboard() {
           <div className="text-[15px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Applications</div>
         </Link>
         <Link
+          href="/admin/early-members"
+          className="rounded-[14px] p-5 border transition-colors hover:border-white/20"
+          style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
+        >
+          <div className="text-[10px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>REVIEW</div>
+          <div className="text-[15px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Early Members</div>
+        </Link>
+        <Link
           href="/admin/venue-inquiries"
           className="rounded-[14px] p-5 border transition-colors hover:border-white/20"
           style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
