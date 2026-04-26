@@ -289,8 +289,8 @@ export default async function HomePage() {
               <h3 className="text-[20px] font-bold mt-8 mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 WhatsApp
               </h3>
-              <a href="https://wa.me/17373086685" target="_blank" rel="noopener noreferrer" className="text-[15px] hover:underline" style={{ color: '#333' }}>
-                1-737-308-6685
+              <a href="https://wa.me/17374233300" target="_blank" rel="noopener noreferrer" className="text-[15px] hover:underline" style={{ color: '#333' }}>
+                (737) 423-3300
               </a>
             </div>
 
