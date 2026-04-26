@@ -123,7 +123,7 @@ export default function VenueRentalPage() {
                 </div>
               )}
               <Link
-                href={`/venue-rental/inquire?type=${venue.slug}`}
+                href={venue.slug === 'micro-parties' ? '/venue-rental/inquire/micro-parties' : `/venue-rental/inquire?type=${venue.slug}`}
                 className="w-full md:w-auto text-center px-[22px] py-3 md:py-2.5 rounded-full text-xs font-semibold tracking-[0.12em] hover:bg-gray-200 transition-all hover:-translate-y-0.5 whitespace-nowrap"
                 style={{ background: '#ffffff', color: '#0a0a0a' }}
               >

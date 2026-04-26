@@ -40,7 +40,7 @@ export default async function AdminDashboard() {
       </div>
 
       {/* Quick links to sub-sections */}
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-14">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 mb-14">
         <Link
           href="/admin"
           className="rounded-[14px] p-5 border transition-colors"
@@ -64,6 +64,14 @@ export default async function AdminDashboard() {
         >
           <div className="text-[10px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>REVIEW</div>
           <div className="text-[15px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Venue Inquiries</div>
+        </Link>
+        <Link
+          href="/admin/micro-parties"
+          className="rounded-[14px] p-5 border transition-colors hover:border-white/20"
+          style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
+        >
+          <div className="text-[10px] font-semibold tracking-[0.14em] mb-1.5" style={{ color: '#8a8a8a' }}>REVIEW</div>
+          <div className="text-[15px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Micro Parties</div>
         </Link>
         <Link
           href="/admin/collaborations"
