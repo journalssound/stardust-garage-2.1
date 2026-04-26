@@ -176,7 +176,7 @@ export default async function HomePage() {
           <p style={{ color: '#8a8a8a' }}>No upcoming events right now. Check back soon.</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[22px]">
-            {eventList.slice(0, 3).map((event) => (
+            {eventList.slice(0, 6).map((event) => (
               <EventCard key={event.id} event={event} />
             ))}
           </div>
