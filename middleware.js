@@ -14,6 +14,15 @@ export async function middleware(request) {
     return NextResponse.next();
   }
 
+  // Dev mode: if Supabase env vars aren't configured, skip auth so the
+  // admin UI is browsable for layout work. Real deployments must set these.
+  if (
+    !process.env.NEXT_PUBLIC_SUPABASE_URL ||
+    !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  ) {
+    return NextResponse.next();
+  }
+
   let supabaseResponse = NextResponse.next({ request });
 
   const supabase = createServerClient(

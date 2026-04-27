@@ -1,313 +1,58 @@
-import Link from 'next/link';
-import { createClient } from '@/lib/supabase/server';
-import SignupForm from './components/SignupForm';
+import Wordmark from './components/Wordmark';
+import PortalTile from './components/PortalTile';
+import EventsTile from './components/EventsTile';
+import SiteFooter from './components/SiteFooter';
+import upcomingEvents from '@/lib/upcomingEvents';
+import { fetchUpcomingEvents } from '@/lib/tickettailor';
 
-const waysWeDoIt = [
-  { title: 'Work hard, play hard', desc: "M–F we offer the cowork experience that Creators and Builders like yourself have been craving. After working hours and weekends, we offer dance music experiences like you won't find anywhere in Austin." },
-  { title: 'Presence First', desc: 'Our policy is "being where your feet are". We do not allow photography/videography on premises. This is born out of a philosophy of magnetism and human-connection.' },
-  { title: 'State-of-the-Art Sound', desc: '4-point L-Acoustics Sound System. We hear many times on the dance floor "wtf this is the best sound I\'ve ever heard".' },
-  { title: 'Legendary Atmosphere', desc: 'Quite possibly the coziest venue on planet earth. "It feels like I\'m in my living room."' },
-];
-
-export const revalidate = 0;
-
-function formatEventDate(dateString) {
-  const date = new Date(dateString + 'T00:00:00');
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-}
-
-async function getSetting(supabase, key) {
-  const { data } = await supabase.from('site_settings').select('value').eq('key', key).single();
-  return data?.value || '';
-}
+export const revalidate = 300;
 
 export default async function HomePage() {
-  const supabase = await createClient();
-
-  const [heroImage, heroDate, heroTitle, eventsResult] = await Promise.all([
-    getSetting(supabase, 'homepage_hero_image'),
-    getSetting(supabase, 'homepage_hero_date'),
-    getSetting(supabase, 'homepage_hero_title'),
-    supabase.from('events').select('*').order('event_date', { ascending: true }),
-  ]);
-
-  const eventList = eventsResult.data || [];
+  // Live data from Ticket Tailor when an API key is configured. Falls
+  // back to the static list in lib/upcomingEvents.js for local dev or
+  // if the API is unreachable.
+  const live = await fetchUpcomingEvents({ limit: 3 });
+  const events = live && live.length > 0 ? live : upcomingEvents;
 
   return (
     <>
-      <div className="px-12 md:px-20 mt-12 mb-16">
-        <section
-          className="relative mx-auto max-w-[1180px] rounded-[20px] overflow-hidden bg-[#111]"
-          style={{ aspectRatio: '16 / 7' }}
-        >
-          {heroImage && (
-            <img
-              src={heroImage}
-              alt={heroTitle || 'Stardust Garage'}
-              className="absolute inset-0 w-full h-full object-cover brightness-75"
+      <main className="min-h-[calc(100vh-100px)] flex flex-col">
+        {/* Hero wordmark */}
+        <section className="flex flex-col items-center px-6 pt-8 md:pt-16 pb-12 md:pb-16">
+          <Wordmark size="xl" align="center" />
+          <p
+            className="mt-6 text-[13px] md:text-[14px] text-center max-w-[460px] leading-[1.6]"
+            style={{ color: 'rgba(255,255,255,0.55)' }}
+          >
+            Underground music venue, cowork space, and creative hub in the
+            St. Elmo Arts District.
+          </p>
+        </section>
+
+        {/* Two portals */}
+        <section className="px-6 pb-20">
+          <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+            <EventsTile events={events} />
+
+            <PortalTile
+              href="/members"
+              transitionName="portal-members"
+              eyebrow="MEMBERSHIP"
+              title="Cowork"
+              summary="A small, curated cowork in the St. Elmo Arts District. The kind of room you actually want to be in all day."
+              bullets={[
+                'Gigabit fiber internet, deep focus',
+                'Healthy refreshments stocked daily',
+                'Members and approved guests only',
+              ]}
+              cta="VIEW PLANS"
+              tint="radial-gradient(120% 80% at 50% 0%, rgba(180,135,70,0.55) 0%, rgba(40,28,18,0.95) 55%, rgba(14,10,8,1) 100%)"
             />
-          )}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%)' }} />
-          <div className="absolute left-10 bottom-9 text-white">
-            {heroDate && (
-              <div className="text-xs font-medium tracking-[0.16em] mb-3.5 opacity-85">{heroDate}</div>
-            )}
-            {heroTitle && (
-              <div className="text-[30px] font-bold -tracking-[0.01em]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                {heroTitle}
-              </div>
-            )}
           </div>
         </section>
-      </div>
+      </main>
 
-      <section className="py-16 px-6" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
-        <SignupForm />
-      </section>
-
-      <section className="max-w-[1100px] mx-auto px-6 py-24">
-        <h2 className="text-[15px] font-bold tracking-[0.12em] mb-8" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-          UPCOMING EVENTS
-        </h2>
-
-        {eventList.length === 0 ? (
-          <p style={{ color: '#8a8a8a' }}>No upcoming events right now. Check back soon.</p>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-[22px]">
-            {eventList.map((event) => (
-              <div key={event.id} className="relative group">
-                <Link href={`/events/${event.slug}`} className="block">
-                  <div className="relative overflow-hidden rounded-[14px] bg-[#1a1a1a] transition-transform group-hover:-translate-y-1" style={{ aspectRatio: '3 / 4' }}>
-                    {event.image_url && (
-                      <img src={event.image_url} alt={event.title} className="w-full h-full object-cover" />
-                    )}
-                  </div>
-                  <div className="text-xs mt-4 mb-2" style={{ color: '#8a8a8a' }}>
-                    {formatEventDate(event.event_date)}
-                  </div>
-                  <h3 className="text-[17px] font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                    {event.title}
-                  </h3>
-                </Link>
-
-                {event.ticket_url ? (
-                  <a
-                    href={event.ticket_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="absolute top-[18px] right-[18px] bg-white text-[#0a0a0a] px-4 py-2 rounded-full text-[11px] font-semibold tracking-[0.12em] hover:bg-gray-200 transition-colors z-10"
-                  >
-                    BUY TICKETS
-                  </a>
-                ) : (
-                  <span className="absolute top-[18px] right-[18px] px-4 py-2 rounded-full text-[11px] font-semibold tracking-[0.12em] border pointer-events-none" style={{ borderColor: 'rgba(255,255,255,0.3)', color: '#f5f5f5', background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)' }}>
-                    PRIVATE
-                  </span>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
-      </section>
-
-      <section className="py-24 px-12" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
-        <div className="max-w-[1400px] mx-auto">
-          <div className="flex items-center gap-2.5 text-xs font-semibold tracking-[0.16em] mb-16" style={{ marginLeft: '80px' }}>
-            <span className="inline-block w-[7px] h-[7px] rounded-full" style={{ background: '#0a0a0a' }} />
-            OUR WAY OF DOING IT
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-14 px-[80px]">
-            {waysWeDoIt.map((item) => (
-              <div key={item.title} className="max-w-[480px]">
-                <h3 className="text-[32px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-[18px]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                  {item.title}
-                </h3>
-                <p className="text-[15px] leading-[1.6]" style={{ color: '#555' }}>
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="max-w-[1100px] mx-auto px-6 py-24">
-        <div className="mb-8 text-center">
-          <div
-            className="inline-block text-[11px] font-semibold tracking-[0.2em] px-3.5 py-1.5 rounded-full mb-4"
-            style={{
-              color: '#8a8a8a',
-              border: '1px solid rgba(255,255,255,0.1)',
-            }}
-          >
-            FIND US
-          </div>
-          <h2
-            className="text-[32px] md:text-[40px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-3"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-          >
-            St. Elmo Arts District
-          </h2>
-          <p className="text-[15px]" style={{ color: '#8a8a8a' }}>
-            Austin, TX 78745
-          </p>
-        </div>
-
-        <div
-          className="rounded-[18px] overflow-hidden border"
-          style={{
-            borderColor: 'rgba(255,255,255,0.08)',
-            aspectRatio: '16 / 7',
-          }}
-        >
-          <iframe
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-97.8270%2C30.2110%2C-97.8070%2C30.2310&layer=mapnik&marker=30.2210%2C-97.8170"
-            style={{ width: '100%', height: '100%', border: 0, filter: 'invert(0.9) hue-rotate(180deg) saturate(0.3)' }}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Stardust Garage location"
-          />
-        </div>
-
-        <div className="mt-6 text-center">
-          <a
-            href="https://www.google.com/maps/search/?api=1&query=4319+Terry-O+Ln+Austin+TX+78745"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[13px] font-semibold tracking-[0.12em] transition-opacity hover:opacity-70"
-            style={{ color: '#f5f5f5' }}
-          >
-            GET DIRECTIONS
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="7" y1="17" x2="17" y2="7" />
-              <polyline points="7 7 17 7 17 17" />
-            </svg>
-          </a>
-        </div>
-      </section>
-
-      <section className="py-24 px-12" style={{ background: '#e9e9e7', color: '#0a0a0a' }}>
-        <div className="max-w-[1400px] mx-auto px-[80px]">
-          <h2
-            className="text-[44px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-16"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-          >
-            Contact
-          </h2>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div>
-              <h3 className="text-[20px] font-bold mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                Email
-              </h3>
-              <a href="mailto:hello@sdgatx.com" className="text-[15px] hover:underline" style={{ color: '#333' }}>
-                hello@sdgatx.com
-              </a>
-
-              <h3 className="text-[20px] font-bold mt-8 mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                WhatsApp
-              </h3>
-              <a href="https://wa.me/17373086685" target="_blank" rel="noopener noreferrer" className="text-[15px] hover:underline" style={{ color: '#333' }}>
-                1-737-308-6685
-              </a>
-            </div>
-
-            <div>
-              <h3 className="text-[20px] font-bold mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                Address
-              </h3>
-              <p className="text-[15px]" style={{ color: '#333' }}>
-                4319 Terry-O Ln<br />
-                Austin, TX 78745
-              </p>
-
-              <h3 className="text-[20px] font-bold mt-8 mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                Opening Hours
-              </h3>
-              <div className="text-[15px] space-y-1.5" style={{ color: '#333' }}>
-                <p>Mon–Fri: 8 AM – 6 PM</p>
-                <p>Wknd Nights: (check schedule)</p>
-                <p>Sun: Open for Events (check schedule)</p>
-              </div>
-
-              <h3 className="text-[20px] font-bold mt-8 mb-4" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                Follow Us
-              </h3>
-              <div className="flex gap-3">
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:-translate-y-0.5"
-                  style={{ background: '#0a0a0a', color: '#ffffff' }}
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                  </svg>
-                </a>
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="YouTube"
-                  className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:-translate-y-0.5"
-                  style={{ background: '#0a0a0a', color: '#ffffff' }}
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M23.5 6.5c-.3-1-1-1.8-2-2C19.5 4 12 4 12 4s-7.5 0-9.5.5c-1 .3-1.8 1-2 2C0 8.5 0 12 0 12s0 3.5.5 5.5c.3 1 1 1.8 2 2C4.5 20 12 20 12 20s7.5 0 9.5-.5c1-.3 1.8-1 2-2 .5-2 .5-5.5.5-5.5s0-3.5-.5-5.5zM9.5 15.5v-7l6 3.5-6 3.5z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <form className="space-y-5">
-                <div className="grid grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    className="w-full bg-transparent border-b pb-2 text-[14px] outline-none focus:border-black transition-colors"
-                    style={{ borderColor: 'rgba(0,0,0,0.25)', color: '#0a0a0a' }}
-                  />
-                  <input
-                    type="email"
-                    placeholder="Your Email"
-                    className="w-full bg-transparent border-b pb-2 text-[14px] outline-none focus:border-black transition-colors"
-                    style={{ borderColor: 'rgba(0,0,0,0.25)', color: '#0a0a0a' }}
-                  />
-                </div>
-                <input
-                  type="text"
-                  placeholder="Subject"
-                  className="w-full bg-transparent border-b pb-2 text-[14px] outline-none focus:border-black transition-colors"
-                  style={{ borderColor: 'rgba(0,0,0,0.25)', color: '#0a0a0a' }}
-                />
-                <textarea
-                  placeholder="Message"
-                  rows={4}
-                  className="w-full bg-transparent border-b pb-2 text-[14px] outline-none focus:border-black transition-colors resize-none"
-                  style={{ borderColor: 'rgba(0,0,0,0.25)', color: '#0a0a0a' }}
-                />
-                <button
-                  type="submit"
-                  className="w-full py-3.5 rounded-full text-[12px] font-semibold tracking-[0.16em] transition-all hover:-translate-y-0.5"
-                  style={{ background: '#0a0a0a', color: '#ffffff' }}
-                >
-                  SEND
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
+      <SiteFooter />
     </>
   );
 }

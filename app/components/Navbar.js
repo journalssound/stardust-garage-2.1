@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import NavLinks from './NavLinks';
+import Wordmark from './Wordmark';
 
 export default async function Navbar() {
   const supabase = await createClient();
@@ -15,7 +16,7 @@ export default async function Navbar() {
   return (
     <div className="flex justify-center pt-8 px-6">
       <nav className="flex items-center justify-between w-full max-w-[1100px]">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center" aria-label="Stardust Garage home">
           {logoUrl ? (
             <img
               src={logoUrl}
@@ -23,12 +24,7 @@ export default async function Navbar() {
               className="h-10 w-auto object-contain"
             />
           ) : (
-            <span
-              className="font-bold text-[15px] tracking-[0.12em] text-white"
-              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-            >
-              STARDUST GARAGE
-            </span>
+            <Wordmark size="sm" />
           )}
         </Link>
         <NavLinks />

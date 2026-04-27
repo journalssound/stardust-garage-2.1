@@ -5,9 +5,8 @@ import { usePathname } from 'next/navigation';
 import { useState, useRef, useEffect } from 'react';
 
 const links = [
-  { href: '/', label: 'EVENTS' },
-  { href: '/cowork', label: 'COWORK' },
-  { href: '/members', label: 'MEMBERS' },
+  { href: '/events', label: 'EVENTS' },
+  { href: '/members', label: 'MEMBERSHIP' },
   { href: '/venue-rental', label: 'VENUE RENTAL' },
   {
     label: 'COLLABORATE',
@@ -26,7 +25,7 @@ export default function NavLinks() {
   const dropdownRef = useRef(null);
 
   const isActive = (href) => {
-    if (href === '/') return pathname === '/' || pathname.startsWith('/events');
+    if (href === '/events') return pathname === '/events' || pathname.startsWith('/events/');
     return pathname === href || pathname.startsWith(href + '/');
   };
 
