@@ -37,8 +37,8 @@ export default async function HomePage() {
             <PortalTile
               href="/members"
               transitionName="portal-members"
-              eyebrow="MEMBERSHIP"
-              title="Cowork"
+              eyebrow="JOIN"
+              title="Membership"
               summary="A small, curated cowork in the St. Elmo Arts District. The kind of room you actually want to be in all day."
               bullets={[
                 'Gigabit fiber internet, deep focus',
