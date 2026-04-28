@@ -63,7 +63,7 @@ export default function CollaborateForm({ role, roleLabel, roleSubtitle }) {
 
   if (submitted) {
     return (
-      <main className="max-w-[700px] mx-auto px-6 py-24 text-center">
+      <main className="max-w-[700px] mx-auto px-4 md:px-6 py-20 md:py-24 text-center">
         <div
           className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-8"
           style={{ background: 'rgba(255,255,255,0.08)' }}
@@ -73,7 +73,7 @@ export default function CollaborateForm({ role, roleLabel, roleSubtitle }) {
           </svg>
         </div>
         <h1
-          className="text-[40px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-4"
+          className="text-[32px] md:text-[40px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-4"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           Submission received
@@ -104,7 +104,7 @@ export default function CollaborateForm({ role, roleLabel, roleSubtitle }) {
   const textareaClass = 'w-full px-5 py-3.5 rounded-[10px] text-[14px] outline-none border transition-colors focus:border-white/30 resize-y';
 
   return (
-    <main className="max-w-[780px] mx-auto px-6 py-16">
+    <main className="max-w-[780px] mx-auto px-4 md:px-6 py-12 md:py-16">
       <Link
         href="/"
         className="inline-block text-[12px] font-semibold tracking-[0.14em] mb-8 transition-opacity hover:opacity-70"
@@ -124,7 +124,7 @@ export default function CollaborateForm({ role, roleLabel, roleSubtitle }) {
           {roleLabel.toUpperCase()}
         </div>
         <h1
-          className="text-[44px] md:text-[52px] font-extrabold -tracking-[0.02em] leading-[1.05] mb-4"
+          className="text-[36px] md:text-[52px] font-extrabold -tracking-[0.02em] leading-[1.05] mb-4"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           Collaborate
@@ -143,7 +143,7 @@ export default function CollaborateForm({ role, roleLabel, roleSubtitle }) {
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* CONTACT INFO */}
         <section
-          className="rounded-[14px] p-8 border"
+          className="rounded-[14px] p-6 md:p-8 border"
           style={{ background: '#0f0f0f', borderColor: 'rgba(255,255,255,0.05)' }}
         >
           <h2 className="text-[11px] font-semibold tracking-[0.16em] mb-6" style={{ color: '#8a8a8a', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
@@ -220,7 +220,7 @@ export default function CollaborateForm({ role, roleLabel, roleSubtitle }) {
 
         {/* ABOUT YOU */}
         <section
-          className="rounded-[14px] p-8 border"
+          className="rounded-[14px] p-6 md:p-8 border"
           style={{ background: '#0f0f0f', borderColor: 'rgba(255,255,255,0.05)' }}
         >
           <h2 className="text-[11px] font-semibold tracking-[0.16em] mb-6" style={{ color: '#8a8a8a', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>

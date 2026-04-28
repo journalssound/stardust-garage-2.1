@@ -10,9 +10,17 @@ export default function SettingsForm({ initialSettings }) {
   const [heroImage, setHeroImage] = useState(initialSettings.homepage_hero_image || '');
   const [heroDate, setHeroDate] = useState(initialSettings.homepage_hero_date || '');
   const [heroTitle, setHeroTitle] = useState(initialSettings.homepage_hero_title || '');
+  const [cardCoworkImage, setCardCoworkImage] = useState(initialSettings.homepage_card_cowork_image || '');
+  const [cardEventsImage, setCardEventsImage] = useState(initialSettings.homepage_card_events_image || '');
+  const [cardStudioImage, setCardStudioImage] = useState(initialSettings.homepage_card_studio_image || '');
+  const [splashLogoImage, setSplashLogoImage] = useState(initialSettings.splash_logo_image || '');
 
   const [uploadingLogo, setUploadingLogo] = useState(false);
   const [uploadingHero, setUploadingHero] = useState(false);
+  const [uploadingCowork, setUploadingCowork] = useState(false);
+  const [uploadingEvents, setUploadingEvents] = useState(false);
+  const [uploadingStudio, setUploadingStudio] = useState(false);
+  const [uploadingSplashLogo, setUploadingSplashLogo] = useState(false);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
@@ -53,9 +61,12 @@ export default function SettingsForm({ initialSettings }) {
       { key: 'homepage_hero_image', value: heroImage.trim() },
       { key: 'homepage_hero_date', value: heroDate.trim() },
       { key: 'homepage_hero_title', value: heroTitle.trim() },
+      { key: 'homepage_card_cowork_image', value: cardCoworkImage.trim() },
+      { key: 'homepage_card_events_image', value: cardEventsImage.trim() },
+      { key: 'homepage_card_studio_image', value: cardStudioImage.trim() },
+      { key: 'splash_logo_image', value: splashLogoImage.trim() },
     ];
 
-    // Upsert each setting
     for (const upd of updates) {
       const { error: err } = await supabase
         .from('site_settings')
@@ -82,6 +93,42 @@ export default function SettingsForm({ initialSettings }) {
   const labelStyle = { color: '#8a8a8a' };
   const inputClass = 'w-full px-5 py-3.5 rounded-[10px] text-[14px] outline-none border transition-colors focus:border-white/30';
 
+  const renderImageUploader = (label, value, setValue, loadingState, setLoadingState, aspectRatio = '4 / 5', helperText = null) => (
+    <>
+      {value && (
+        <div className="mb-4 rounded-[10px] overflow-hidden border" style={{ borderColor: 'rgba(255,255,255,0.1)', aspectRatio }}>
+          <img src={value} alt="Preview" className="w-full h-full object-cover" />
+        </div>
+      )}
+      <label className={labelClass} style={labelStyle}>{label}</label>
+      <input
+        type="file"
+        accept="image/*"
+        onChange={(e) => {
+          const file = e.target.files?.[0];
+          if (file) uploadFile(file, setLoadingState, setValue);
+        }}
+        disabled={loadingState}
+        className="text-[13px] file:mr-4 file:px-5 file:py-2.5 file:rounded-full file:border-0 file:text-[12px] file:font-semibold file:tracking-[0.12em] file:bg-white file:text-black file:cursor-pointer hover:file:bg-gray-200"
+        style={{ color: '#8a8a8a' }}
+      />
+      {loadingState && <p className="text-[13px] mt-2" style={{ color: '#8a8a8a' }}>Uploading...</p>}
+      <div className="mt-4">
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          placeholder="Or paste an image URL"
+          className={inputClass}
+          style={inputStyle}
+        />
+      </div>
+      {helperText && (
+        <p className="text-[11px] mt-3" style={{ color: '#555' }}>{helperText}</p>
+      )}
+    </>
+  );
+
   return (
     <form onSubmit={handleSave} className="space-y-10">
       {/* LOGO */}
@@ -89,10 +136,7 @@ export default function SettingsForm({ initialSettings }) {
         className="rounded-[14px] p-8 border"
         style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
       >
-        <h2
-          className="text-[18px] font-bold mb-5"
-          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-        >
+        <h2 className="text-[18px] font-bold mb-5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
           Logo
         </h2>
 
@@ -138,7 +182,7 @@ export default function SettingsForm({ initialSettings }) {
         )}
 
         <p className="text-[11px] mt-4" style={{ color: '#555' }}>
-          Tip: use a transparent PNG or SVG. It displays at 40px height in the nav.
+          Tip: use a transparent PNG or SVG. It displays at 55px height in the nav.
         </p>
       </section>
 
@@ -147,43 +191,11 @@ export default function SettingsForm({ initialSettings }) {
         className="rounded-[14px] p-8 border"
         style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
       >
-        <h2
-          className="text-[18px] font-bold mb-5"
-          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-        >
+        <h2 className="text-[18px] font-bold mb-5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
           Homepage Hero
         </h2>
 
-        {heroImage && (
-          <div className="mb-4 rounded-[10px] overflow-hidden border" style={{ borderColor: 'rgba(255,255,255,0.1)', aspectRatio: '16 / 7.3' }}>
-            <img src={heroImage} alt="Hero preview" className="w-full h-full object-cover" />
-          </div>
-        )}
-
-        <label className={labelClass} style={labelStyle}>HERO IMAGE</label>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => {
-            const file = e.target.files?.[0];
-            if (file) uploadFile(file, setUploadingHero, setHeroImage);
-          }}
-          disabled={uploadingHero}
-          className="text-[13px] file:mr-4 file:px-5 file:py-2.5 file:rounded-full file:border-0 file:text-[12px] file:font-semibold file:tracking-[0.12em] file:bg-white file:text-black file:cursor-pointer hover:file:bg-gray-200"
-          style={{ color: '#8a8a8a' }}
-        />
-        {uploadingHero && <p className="text-[13px] mt-2" style={{ color: '#8a8a8a' }}>Uploading...</p>}
-
-        <div className="mt-4">
-          <input
-            type="text"
-            value={heroImage}
-            onChange={(e) => setHeroImage(e.target.value)}
-            placeholder="Or paste an image URL"
-            className={inputClass}
-            style={inputStyle}
-          />
-        </div>
+        {renderImageUploader('HERO IMAGE', heroImage, setHeroImage, uploadingHero, setUploadingHero, '16 / 7')}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
           <div>
@@ -211,6 +223,57 @@ export default function SettingsForm({ initialSettings }) {
         </div>
       </section>
 
+      {/* HOMEPAGE CARDS */}
+      <section
+        className="rounded-[14px] p-8 border"
+        style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
+      >
+        <h2 className="text-[18px] font-bold mb-2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          Homepage Cards
+        </h2>
+        <p className="text-[13px] mb-6" style={{ color: '#8a8a8a' }}>
+          The three large cards on the homepage that link to Cowork, Events, and Studio (coming soon).
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <h3 className="text-[14px] font-bold mb-4" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              Cowork Card
+            </h3>
+            {renderImageUploader('COWORK CARD IMAGE', cardCoworkImage, setCardCoworkImage, uploadingCowork, setUploadingCowork, '4 / 5', 'Shown as a vertical card on the homepage.')}
+          </div>
+          <div>
+            <h3 className="text-[14px] font-bold mb-4" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              Events Card
+            </h3>
+            {renderImageUploader('EVENTS CARD IMAGE', cardEventsImage, setCardEventsImage, uploadingEvents, setUploadingEvents, '4 / 5', 'Shown as a vertical card on the homepage.')}
+          </div>
+          <div>
+            <h3 className="text-[14px] font-bold mb-4" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              Studio Card
+            </h3>
+            {renderImageUploader('STUDIO CARD IMAGE', cardStudioImage, setCardStudioImage, uploadingStudio, setUploadingStudio, '4 / 5', 'Shown as a vertical card with "Coming Soon" badge.')}
+          </div>
+        </div>
+      </section>
+
+      {/* SPLASH PAGE */}
+      <section
+        className="rounded-[14px] p-8 border"
+        style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
+      >
+        <h2 className="text-[18px] font-bold mb-2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          Splash Page
+        </h2>
+        <p className="text-[13px] mb-6" style={{ color: '#8a8a8a' }}>
+          The floating logo image shown on the splash entry page (the first thing visitors see).
+        </p>
+
+        <div className="max-w-[280px]">
+          {renderImageUploader('SPLASH LOGO', splashLogoImage, setSplashLogoImage, uploadingSplashLogo, setUploadingSplashLogo, '1 / 1', 'Recommended: transparent PNG. Centered on the splash page above "enter the portal".')}
+        </div>
+      </section>
+
       {error && (
         <div className="text-[13px] text-red-400 p-3 rounded-[10px] border border-red-500/30 bg-red-500/10">
           {error}
@@ -224,7 +287,7 @@ export default function SettingsForm({ initialSettings }) {
 
       <button
         type="submit"
-        disabled={saving || uploadingLogo || uploadingHero}
+        disabled={saving || uploadingLogo || uploadingHero || uploadingCowork || uploadingEvents || uploadingStudio || uploadingSplashLogo}
         className="w-full py-4 rounded-full text-[12px] font-semibold tracking-[0.16em] transition-all hover:-translate-y-0.5 disabled:opacity-50"
         style={{ background: '#ffffff', color: '#0a0a0a' }}
       >

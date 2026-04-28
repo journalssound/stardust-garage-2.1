@@ -72,7 +72,7 @@ export default function ApplyForm({ planSlug, planName, planPrice }) {
 
   if (submitted) {
     return (
-      <main className="max-w-[700px] mx-auto px-6 py-24 text-center">
+      <main className="max-w-[700px] mx-auto px-4 md:px-6 py-20 md:py-24 text-center">
         <div
           className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-8"
           style={{ background: 'rgba(255,255,255,0.08)' }}
@@ -82,7 +82,7 @@ export default function ApplyForm({ planSlug, planName, planPrice }) {
           </svg>
         </div>
         <h1
-          className="text-[40px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-4"
+          className="text-[32px] md:text-[40px] font-extrabold -tracking-[0.02em] leading-[1.1] mb-4"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           Application received
@@ -113,7 +113,7 @@ export default function ApplyForm({ planSlug, planName, planPrice }) {
   const textareaClass = 'w-full px-5 py-3.5 rounded-[10px] text-[14px] outline-none border transition-colors focus:border-white/30 resize-y';
 
   return (
-    <main className="max-w-[700px] mx-auto px-6 py-16">
+    <main className="max-w-[700px] mx-auto px-4 md:px-6 py-12 md:py-16">
       <Link
         href="/members"
         className="inline-block text-[12px] font-semibold tracking-[0.14em] mb-8 transition-opacity hover:opacity-70"
@@ -133,7 +133,7 @@ export default function ApplyForm({ planSlug, planName, planPrice }) {
           {planName.toUpperCase()} · {planPrice}
         </div>
         <h1
-          className="text-[44px] md:text-[52px] font-extrabold -tracking-[0.02em] leading-[1.05] mb-4"
+          className="text-[36px] md:text-[52px] font-extrabold -tracking-[0.02em] leading-[1.05] mb-4"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           Membership
@@ -148,7 +148,7 @@ export default function ApplyForm({ planSlug, planName, planPrice }) {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div
-          className="rounded-[14px] p-8 border space-y-6"
+          className="rounded-[14px] p-6 md:p-8 border space-y-6"
           style={{ background: '#0f0f0f', borderColor: 'rgba(255,255,255,0.05)' }}
         >
           <div>
@@ -241,7 +241,7 @@ export default function ApplyForm({ planSlug, planName, planPrice }) {
         </div>
 
         <div
-          className="rounded-[14px] p-8 border space-y-6"
+          className="rounded-[14px] p-6 md:p-8 border space-y-6"
           style={{ background: '#0f0f0f', borderColor: 'rgba(255,255,255,0.05)' }}
         >
           <div>
@@ -300,7 +300,7 @@ export default function ApplyForm({ planSlug, planName, planPrice }) {
         </div>
 
         <div
-          className="rounded-[14px] p-8 border"
+          className="rounded-[14px] p-6 md:p-8 border"
           style={{ background: '#0f0f0f', borderColor: 'rgba(255,255,255,0.05)' }}
         >
           <h3 className={labelClass} style={{ ...labelStyle, marginBottom: 20 }}>

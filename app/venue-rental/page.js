@@ -135,13 +135,13 @@ export default function VenueRentalPage() {
         {venues.map((venue) => (
           <div
             key={venue.slug}
-            className="rounded-[18px] p-10 border grid gap-6"
-            style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)', gridTemplateColumns: '1fr auto' }}
+            className="rounded-[18px] p-7 md:p-10 border flex flex-col md:flex-row md:items-center gap-6 md:gap-8"
+            style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.05)' }}
           >
-            <div>
-              <div className="flex items-start gap-4 mb-[22px]">
+            <div className="flex-1">
+              <div className="flex items-start gap-4 mb-[18px] md:mb-[22px]">
                 <VenueIcon name={venue.icon} />
-                <div className="text-[22px] font-bold -tracking-[0.01em]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                <div className="text-[20px] md:text-[22px] font-bold -tracking-[0.01em]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                   {venue.name}
                 </div>
               </div>
@@ -154,18 +154,18 @@ export default function VenueRentalPage() {
                 ))}
               </ul>
             </div>
-            <div className="flex flex-col items-end justify-center gap-3">
+            <div className="flex flex-col md:items-end gap-3 md:min-w-[180px]">
               {venue.startingPrice && (
                 <div
-                  className="text-[13px] font-medium whitespace-nowrap"
+                  className="text-[13px] font-medium"
                   style={{ color: '#8a8a8a' }}
                 >
                   {venue.startingPrice}
                 </div>
               )}
               <Link
-                href={`/venue-rental/inquire?type=${venue.slug}`}
-                className="px-[22px] py-2.5 rounded-full text-xs font-semibold tracking-[0.12em] hover:bg-gray-200 transition-all hover:-translate-y-0.5 whitespace-nowrap"
+                href={venue.slug === 'micro-parties' ? '/venue-rental/inquire/micro-parties' : `/venue-rental/inquire?type=${venue.slug}`}
+                className="w-full md:w-auto text-center px-[22px] py-3 md:py-2.5 rounded-full text-xs font-semibold tracking-[0.12em] hover:bg-gray-200 transition-all hover:-translate-y-0.5 whitespace-nowrap"
                 style={{ background: '#ffffff', color: '#0a0a0a' }}
               >
                 INQUIRE
@@ -222,8 +222,8 @@ export default function VenueRentalPage() {
         </div>
       </div>
 
-      <div className="text-center py-10">
-        <p className="text-[15px] mb-6" style={{ color: '#8a8a8a' }}>
+      <div className="text-center py-8 md:py-10">
+        <p className="text-[15px] mb-5 md:mb-6" style={{ color: '#8a8a8a' }}>
           Interested in hosting an event? Get in touch for availability and custom packages.
         </p>
         <Link
